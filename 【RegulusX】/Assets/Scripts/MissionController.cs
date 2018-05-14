@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Fungus;
 
 public class MissionController : MonoBehaviour {
 
@@ -40,12 +41,12 @@ public class MissionController : MonoBehaviour {
 
 	}
 
-	void OnCollisionEnter (Collision Mission)
+	void OnCollisionEnter (UnityEngine.Collision Mission)
 	{
 		if (Mission.gameObject.name == "Well") {
 			if (MissionObj == WateringCan) {
 				M1_WateringCan_02 = true;
-
+                Flowchart.BroadcastFungusMessage("GotWater");
 
 			}
 		}
@@ -57,15 +58,15 @@ public class MissionController : MonoBehaviour {
 			//AnimationController.Get();
 			M1_WateringCan = true;
 			W_Collider.enabled = !W_Collider.enabled;
-
-		}
+            Flowchart.BroadcastFungusMessage("GotWaterCan");
+        }
 
 		if (Mission.gameObject.name == "Rose") {
 			if (MissionObj == WateringCan && M1_WateringCan_02) {
 					WateringCan.SetActive (false);
 			}
-
-		}
+            Flowchart.BroadcastFungusMessage("RoseGotWater");
+        }
 
 	}
 }

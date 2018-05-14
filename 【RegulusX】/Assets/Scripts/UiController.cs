@@ -8,7 +8,7 @@ public class UiController : MonoBehaviour {
     MissionController missionctor;
 
     void Awake () {
-        GameObject.Find("Player").GetComponent<PlayerController>().enabled = false;
+        //GameObject.Find("Player").GetComponent<PlayerController>().enabled = false;
         istalking = GameObject.Find("IsTalking").GetComponent<Flowchart>();
         MissionController missionctor = GetComponent<MissionController>();
     }
@@ -27,6 +27,10 @@ public class UiController : MonoBehaviour {
         if(!UiController.Talking)
         {
             GameObject.Find("Player").GetComponent<PlayerController>().enabled = true;
+        }
+        else if (UiController.Talking)
+        {
+            GameObject.Find("Player").GetComponent<PlayerController>().enabled = false;
         }
     }
 
