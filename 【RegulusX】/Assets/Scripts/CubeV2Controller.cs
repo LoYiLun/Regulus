@@ -21,7 +21,7 @@ public class CubeV2Controller : MonoBehaviour {
 	private int DY = 0;
 	private int DZ = 0;
 	private int A, B, K;
-	private float speed = 16f;
+	private float speed = 25f;
 
 	private Vector3 target = new Vector3();
 	private bool moveState = false;
@@ -151,7 +151,7 @@ public class CubeV2Controller : MonoBehaviour {
 				this.transform.parent = AllCube.transform;
 				Player.transform.parent = null;
 				FloorMom.transform.parent = null;
-				speed = 16f;
+				speed = 25f;
 				if(CubeMom.transform.childCount == 0)
 					RotateNum = "Stop";
 			}
@@ -191,11 +191,11 @@ public class CubeV2Controller : MonoBehaviour {
 		//方法B，取得轉動後新座標
 		case"R1":
 			if (this.CubeL == 1/* && Player.transform.position.z > -0.6*/) {
-				K = A = this.CubeD - 1;
-				A = B = this.CubeR - 1;
-				B = -K;
-				this.CubeD = A + 1;
-				this.CubeR = B + 1;
+				K = A = this.CubeD;
+				A = B = this.CubeR;
+				B = 1-K;
+				this.CubeD = A;
+				this.CubeR = B;
 				DZ = 1;
 				DX = DY = 0;
 				this.transform.parent = CubeMom.transform;
@@ -230,11 +230,11 @@ public class CubeV2Controller : MonoBehaviour {
 		case"R2":
 			if (this.CubeL == 0 /*&& Player.transform.position.z < 0.8*/) {
 				
-				K = A = this.CubeD - 1;
-				A = B = this.CubeR - 1;
-				B = -K;
-				this.CubeD = A + 1;
-				this.CubeR = B + 1;
+				K = A = this.CubeD;
+				A = B = this.CubeR;
+				B = 1-K;
+				this.CubeD = A;
+				this.CubeR = B;
 				DZ = 1;
 				DX = DY = 0;
 				this.transform.parent = CubeMom.transform;
@@ -249,11 +249,11 @@ public class CubeV2Controller : MonoBehaviour {
 		case"R3":
 			if (this.CubeD == 0) {
 				
-				K = A = this.CubeL - 1;
-				A = B = this.CubeR - 1;
-				B = -K;
-				this.CubeL = A + 1;
-				this.CubeR = B + 1;
+				K = A = this.CubeL;
+				A = B = this.CubeR;
+				B = 1-K;
+				this.CubeL = A;
+				this.CubeR = B;
 				DY = -1;
 				DX = DZ = 0;
 				this.transform.parent = CubeMom.transform;
@@ -291,11 +291,11 @@ public class CubeV2Controller : MonoBehaviour {
 		case"R4":
 			if (this.CubeD == 1) {
 				
-				K = A = this.CubeL - 1;
-				A = B = this.CubeR - 1;
-				B = -K;
-				this.CubeL = A + 1;
-				this.CubeR = B + 1;
+				K = A = this.CubeL;
+				A = B = this.CubeR;
+				B = 1-K;
+				this.CubeL = A;
+				this.CubeR = B;
 				DY = -1;
 				DX = DZ = 0;
 				this.transform.parent = CubeMom.transform;
@@ -309,11 +309,11 @@ public class CubeV2Controller : MonoBehaviour {
 		case"R5":
 			if (this.CubeR == 1/* && Player.transform.position.x > -0.6*/) {
 				
-				K = A = this.CubeL - 1;
-				A = B = this.CubeD - 1;
-				B = -K;
-				this.CubeL = A + 1;
-				this.CubeD = B + 1;
+				K = A = this.CubeL;
+				A = B = this.CubeD;
+				B = 1-K;
+				this.CubeL = A;
+				this.CubeD = B;
 				DX = 1;
 				DY = DZ = 0;
 				this.transform.parent = CubeMom.transform;
@@ -347,11 +347,11 @@ public class CubeV2Controller : MonoBehaviour {
 		case"R6":
 			if (this.CubeR == 0/* && Player.transform.position.x < 0.8*/) {
 				
-				K = A = this.CubeL - 1;
-				A = B = this.CubeD - 1;
-				B = -K;
-				this.CubeL = A + 1;
-				this.CubeD = B + 1;
+				K = A = this.CubeL;
+				A = B = this.CubeD;
+				B = 1-K;
+				this.CubeL = A;
+				this.CubeD = B;
 				DX = 1;
 				DY = DZ = 0;
 				this.transform.parent = CubeMom.transform;
@@ -363,13 +363,13 @@ public class CubeV2Controller : MonoBehaviour {
 			}break;
 
 		case"R7":
-			if (this.CubeL == 0 && Player.transform.position.z < 0.8) {
+			if (this.CubeL == 0/* && Player.transform.position.z < 0.8*/) {
 				
-				K = A = this.CubeR - 1;
-				A = B = this.CubeD - 1;
-				B = -K;
-				this.CubeR = A + 1;
-				this.CubeD = B + 1;
+				K = A = this.CubeR;
+				A = B = this.CubeD;
+				B = 1-K;
+				this.CubeR = A;
+				this.CubeD = B;
 				DZ = -1;
 				DX = DY = 0;
 				this.transform.parent = CubeMom.transform;
@@ -401,13 +401,13 @@ public class CubeV2Controller : MonoBehaviour {
 			}break;*/
 
 		case"R8":
-			if (this.CubeL == 1 && Player.transform.position.z > -0.6) {
+			if (this.CubeL == 1/* && Player.transform.position.z > -0.6*/) {
 				
-				K = A = this.CubeR - 1;
-				A = B = this.CubeD - 1;
-				B = -K;
-				this.CubeR = A + 1;
-				this.CubeD = B + 1;
+				K = A = this.CubeR;
+				A = B = this.CubeD;
+				B = 1-K;
+				this.CubeR = A;
+				this.CubeD = B;
 				DZ = -1;
 				DX = DY = 0;
 				this.transform.parent = CubeMom.transform;
@@ -421,11 +421,11 @@ public class CubeV2Controller : MonoBehaviour {
 		case"R9":
 			if (this.CubeD == 1) {
 				
-				K = A = this.CubeR - 1;
-				A = B = this.CubeL - 1;
-				B = -K;
-				this.CubeR = A + 1;
-				this.CubeL = B + 1;
+				K = A = this.CubeR;
+				A = B = this.CubeL;
+				B = 1-K;
+				this.CubeR = A;
+				this.CubeL = B;
 				DY = 1;
 				DX = DZ = 0;
 				this.transform.parent = CubeMom.transform;
@@ -457,11 +457,11 @@ public class CubeV2Controller : MonoBehaviour {
 		case"R10":
 			if (this.CubeD == 0) {
 				
-				K = A = this.CubeR - 1;
-				A = B = this.CubeL - 1;
-				B = -K;
-				this.CubeR = A + 1;
-				this.CubeL = B + 1;
+				K = A = this.CubeR;
+				A = B = this.CubeL;
+				B = 1-K;
+				this.CubeR = A;
+				this.CubeL = B;
 				DY = 1;
 				DX = DZ = 0;
 				this.transform.parent = CubeMom.transform;
@@ -481,11 +481,11 @@ public class CubeV2Controller : MonoBehaviour {
 		case"R11":
 			if (this.CubeR == 0/* && Player.transform.position.x < 0.8*/) {
 				
-				K = A = this.CubeD - 1;
-				A = B = this.CubeL - 1;
-				B = -K;
-				this.CubeD = A + 1;
-				this.CubeL = B + 1;
+				K = A = this.CubeD;
+				A = B = this.CubeL;
+				B = 1-K;
+				this.CubeD = A;
+				this.CubeL = B;
 				DX = -1;
 				DY = DZ = 0;
 				this.transform.parent = CubeMom.transform;
@@ -519,11 +519,11 @@ public class CubeV2Controller : MonoBehaviour {
 		case"R12":
 			if (this.CubeR == 1/* && Player.transform.position.x > -0.6*/) {
 				
-				K = A = this.CubeD - 1;
-				A = B = this.CubeL - 1;
-				B = -K;
-				this.CubeD = A + 1;
-				this.CubeL = B + 1;
+				K = A = this.CubeD;
+				A = B = this.CubeL;
+				B = 1-K;
+				this.CubeD = A;
+				this.CubeL = B;
 				DX = -1;
 				DY = DZ = 0;
 				this.transform.parent = CubeMom.transform;
