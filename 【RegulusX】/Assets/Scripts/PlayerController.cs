@@ -40,14 +40,17 @@ public class PlayerController : MonoBehaviour {
 	public float XXX;
 
 
-
+	//V2
+	public bool CubeV2 = true;
 
 	void Start () {
 		FloorR = 1;
 		FloorL = 4;
 		Player = GameObject.Find("Player");
 
-
+		//V2 Cube
+		if(CubeV2 == true)
+			MoveTarget = new Vector3(1.29f,1.8f,0);
 
 
 	}
@@ -144,7 +147,9 @@ public class PlayerController : MonoBehaviour {
 
 	void FixedUpdate () {
 
-		
+
+
+
 		//九宮格走路
 		//print (FloorR);
 		if (Input.GetKey (KeyCode.UpArrow)) {
