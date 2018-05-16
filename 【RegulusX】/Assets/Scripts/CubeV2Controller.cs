@@ -21,7 +21,7 @@ public class CubeV2Controller : MonoBehaviour {
 	private int DY = 0;
 	private int DZ = 0;
 	private int A, B, K;
-	private float speed = 25f;
+	private float speed = 27f;
 
 	private Vector3 target = new Vector3();
 	private bool moveState = false;
@@ -135,14 +135,14 @@ public class CubeV2Controller : MonoBehaviour {
 				                 Mathf.Abs (CubeMom.transform.eulerAngles.y) +
 				                 Mathf.Abs (CubeMom.transform.eulerAngles.z) - 180);
 
-			/*
+
 			if (RotateTo90 >= 1 && RotateTo90 <= 179) {
 				speed *= 1.2f;
 			}
 
 			if (RotateTo90 >= 10 && RotateTo90 <= 170) {
 				speed *= 0.79f;
-			}*/
+			}
 
 
 			if ( RotateTo90>= 90 && RotateTo90 <= 90.5f )
@@ -151,7 +151,7 @@ public class CubeV2Controller : MonoBehaviour {
 				this.transform.parent = AllCube.transform;
 				Player.transform.parent = null;
 				FloorMom.transform.parent = null;
-				speed = 25f;
+				speed = 27f;
 				if(CubeMom.transform.childCount == 0)
 					RotateNum = "Stop";
 			}

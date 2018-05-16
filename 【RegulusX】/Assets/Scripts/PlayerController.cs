@@ -11,8 +11,9 @@ public class PlayerController : MonoBehaviour {
 	public static bool moveState = false;
 	private bool OnIce = false;
 	private float MoveDistance = 0.43f;
-	public static int FloorR;
-	public static int FloorL;
+	public static int FloorR = 1;
+	public static int FloorL = 4;
+	public static int FloorMax = 8;
 	public static Vector3 MoveTarget;
 	private int FTR;
 	private int FTL;
@@ -44,14 +45,13 @@ public class PlayerController : MonoBehaviour {
 	public static bool CubeV2 = true;
 
 	void Start () {
-		FloorR = 1;
-		FloorL = 4;
 		Player = GameObject.Find("Player");
 		MoveTarget = new Vector3(1.29f,2.566f,0);
 
 		//V2 Cube
 		if (CubeV2 == true) {
-			Debug.Log ("YYYY");	
+			FloorL = 1;
+			FloorMax = 5;
 			MoveTarget =  new Vector3(0.978f,2.59f,0.982f);
 			MoveDistance = 0.4f;
 		}
@@ -159,7 +159,7 @@ public class PlayerController : MonoBehaviour {
 
 			if (OneShot == false) {
 				Player.transform.rotation = Quaternion.Euler (0f, 270f, 0f);
-				if (FloorR < 8) {
+				if (FloorR < FloorMax) {
 					SavePosition ();
 					MoveTarget -= new Vector3 (MoveDistance, 0f, 0f);
 					FloorR += 1;
@@ -192,7 +192,7 @@ public class PlayerController : MonoBehaviour {
 
 			if (OneShot == false) {
 				Player.transform.rotation = Quaternion.Euler (0f, 180f, 0f);
-				if (FloorL < 8) {
+				if (FloorL < FloorMax) {
 					SavePosition ();
 					MoveTarget -= new Vector3 (0f, 0f, MoveDistance);
 					FloorL += 1;
