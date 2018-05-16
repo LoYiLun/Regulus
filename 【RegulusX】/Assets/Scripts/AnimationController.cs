@@ -7,7 +7,7 @@ public class AnimationController : MonoBehaviour {
 	public static bool GetItem;
 	public static bool AnimationEnd = false;
 	private GameObject Player;
-	private GameObject Item;
+	public static GameObject Item;
 	private GameObject P_GetItem;
 
 	void Start () {
@@ -32,9 +32,9 @@ public class AnimationController : MonoBehaviour {
 		if (GetItem) {
 			for (float i = 0; i <= 2f; i += Time.deltaTime) {
 				PlayerController.moveState = false;
-				Item.transform.position = new Vector3 (Item.transform.position.x, Item.transform.position.y + 0.004f * i * Time.deltaTime, Item.transform.position.z);
+				Item.transform.position = new Vector3 (Item.transform.position.x, Item.transform.position.y + 0.008f * i * Time.deltaTime, Item.transform.position.z);
 				Item.transform.Rotate (Vector3.back * 3f * Time.deltaTime);
-				print (i + " seconds");
+				//print (i + " seconds");
 				yield return 0;
 			}
 		}

@@ -13,7 +13,7 @@ public class PlayerController : MonoBehaviour {
 	private float MoveDistance = 0.43f;
 	public static int FloorR;
 	public static int FloorL;
-	public static Vector3 MoveTarget = new Vector3(1.29f,2.566f,0);
+	public static Vector3 MoveTarget;
 	private int FTR;
 	private int FTL;
 	private int BL = 5;
@@ -41,17 +41,20 @@ public class PlayerController : MonoBehaviour {
 
 
 	//V2
-	public bool CubeV2 = true;
+	public static bool CubeV2 = true;
 
 	void Start () {
 		FloorR = 1;
 		FloorL = 4;
 		Player = GameObject.Find("Player");
+		MoveTarget = new Vector3(1.29f,2.566f,0);
 
 		//V2 Cube
-		if(CubeV2 == true)
-			MoveTarget = new Vector3(1.29f,1.8f,0);
-
+		if (CubeV2 == true) {
+			Debug.Log ("YYYY");	
+			MoveTarget =  new Vector3(0.978f,2.59f,0.982f);
+			MoveDistance = 0.4f;
+		}
 
 	}
 

@@ -38,7 +38,7 @@ public class CubeV2Controller : MonoBehaviour {
 		R_Button = GameObject.Find("R_Button");
 		Player = GameObject.Find("Player");
 		stab = GameObject.Find("stab");
-
+		PlayerController.CubeV2 = true;
 
 	}
 
