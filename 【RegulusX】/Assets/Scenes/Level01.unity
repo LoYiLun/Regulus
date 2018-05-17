@@ -1434,12 +1434,6 @@ MeshFilter:
   m_PrefabInternal: {fileID: 1803352923}
   m_GameObject: {fileID: 102531406}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!114 &106913602 stripped
-MonoBehaviour:
-  m_PrefabParentObject: {fileID: 114753955757908426, guid: 7b8f56ebb0cf4b84d8b19060c53a1ca2,
-    type: 2}
-  m_PrefabInternal: {fileID: 668119410}
-  m_Script: {fileID: 11500000, guid: 3d3d73aef2cfc4f51abf34ac00241f60, type: 3}
 --- !u!1 &124867038 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 100046, guid: ec062724815266c4186f9ab78fb4a466, type: 3}
@@ -2465,6 +2459,18 @@ MeshFilter:
   m_PrefabInternal: {fileID: 1803352923}
   m_GameObject: {fileID: 189318177}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &190510786 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114891167833199170, guid: 7b8f56ebb0cf4b84d8b19060c53a1ca2,
+    type: 2}
+  m_PrefabInternal: {fileID: 668119410}
+  m_Script: {fileID: 11500000, guid: 3d3d73aef2cfc4f51abf34ac00241f60, type: 3}
+--- !u!114 &190510789 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114410382733167776, guid: 7b8f56ebb0cf4b84d8b19060c53a1ca2,
+    type: 2}
+  m_PrefabInternal: {fileID: 668119410}
+  m_Script: {fileID: 11500000, guid: ec422cd568a9c4a31ad7c36d0572b9da, type: 3}
 --- !u!114 &191211425 stripped
 MonoBehaviour:
   m_PrefabParentObject: {fileID: 114979911277100488, guid: 6869acdc048fa8743a32dd8558a23665,
@@ -8278,9 +8284,8 @@ MonoBehaviour:
     width: 1114
     height: 859
   selectedBlocks:
-  - {fileID: 320653463}
-  selectedCommands:
-  - {fileID: 320653455}
+  - {fileID: 320653457}
+  selectedCommands: []
   variables: []
   description: 
   stepPause: 0
@@ -10344,7 +10349,7 @@ Prefab:
     - target: {fileID: 114916262317644816, guid: c56a96d5b1eb03c41a5ef60199f9a7b8,
         type: 2}
       propertyPath: selectedBlocks.Array.size
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4881574200080594, guid: c56a96d5b1eb03c41a5ef60199f9a7b8, type: 2}
       propertyPath: m_LocalPosition.x
@@ -12035,12 +12040,12 @@ Prefab:
         type: 2}
       propertyPath: selectedCommands.Array.data[0]
       value: 
-      objectReference: {fileID: 967332239}
+      objectReference: {fileID: 190510789}
     - target: {fileID: 114286014260794724, guid: 7b8f56ebb0cf4b84d8b19060c53a1ca2,
         type: 2}
       propertyPath: selectedBlocks.Array.data[0]
       value: 
-      objectReference: {fileID: 106913602}
+      objectReference: {fileID: 190510786}
     - target: {fileID: 114387677824295246, guid: 7b8f56ebb0cf4b84d8b19060c53a1ca2,
         type: 2}
       propertyPath: targetFlowchart
@@ -19954,12 +19959,6 @@ MeshFilter:
   m_PrefabInternal: {fileID: 1803352923}
   m_GameObject: {fileID: 957517067}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!114 &967332239 stripped
-MonoBehaviour:
-  m_PrefabParentObject: {fileID: 114251328957653232, guid: 7b8f56ebb0cf4b84d8b19060c53a1ca2,
-    type: 2}
-  m_PrefabInternal: {fileID: 668119410}
-  m_Script: {fileID: 11500000, guid: 050fb9e6e72f442b3b883da8a965bdeb, type: 3}
 --- !u!1 &971558189 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 100000, guid: de26a9abf5af3a5488050297b0d49f9b, type: 3}
