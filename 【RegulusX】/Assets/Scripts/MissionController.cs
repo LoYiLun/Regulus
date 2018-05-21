@@ -99,7 +99,8 @@ public class MissionController : MonoBehaviour {
 				AnimationController.GetItem = true;
 				M2_GiveWind = true;
 				M2_FindWind = false;
-			}
+                Flowchart.BroadcastFungusMessage("FindWind");//觸發屏風對話
+            }
 		}
 
 		if (M2_GiveWind) {
@@ -114,7 +115,8 @@ public class MissionController : MonoBehaviour {
 				M3_LastGetWater = true;
 				M1_FirstFeedRose = false;
 				M2_GiveWind = false;
-			}
+                Flowchart.BroadcastFungusMessage("GiveWind");//觸發給屏風對話
+            }
 		}
 
 		if (M3_LastGetWater) {
@@ -128,7 +130,8 @@ public class MissionController : MonoBehaviour {
 					WateringCan.GetComponent<Renderer> ().material = Resources.Load("Universe01", typeof(Material)) as Material;
 				M3_LastFeedRose = true;
 				M3_LastGetWater = false;
-			}
+               
+            }
 		}
 
 		if (M3_LastFeedRose) {
@@ -140,7 +143,8 @@ public class MissionController : MonoBehaviour {
 				AnimationController.GetItem = true;
 				WateringCan.GetComponent<Renderer> ().material = Resources.Load ("Glass01", typeof(Material)) as Material;
 				M3_LastFeedRose = false;
-				}
+                Flowchart.BroadcastFungusMessage("LastFeedWater");
+            }
 
 
 			}
