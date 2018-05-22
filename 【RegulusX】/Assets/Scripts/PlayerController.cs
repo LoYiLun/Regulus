@@ -10,14 +10,14 @@ public class PlayerController : MonoBehaviour {
 	public GameObject PlayerStep;
 	public static bool moveState = false;
 	private bool OnIce = false;
-	private float MoveDistance = 0.43f;
-	public static int FloorR = 1;
-	public static int FloorL = 4;
-	public static int FloorMax = 8;
+	private float MoveDistance;
+	public static int FloorR;
+	public static int FloorL;
+	public static int FloorMax;
 	public static Vector3 MoveTarget;
 	private int FTR;
 	private int FTL;
-	private int BL = 5;
+	private int BodyLimit = 5;
 	private Vector3 TargetTemp;
 	public static bool ICanGo = true;
 	public static bool OneShot = false;
@@ -37,8 +37,8 @@ public class PlayerController : MonoBehaviour {
 
 	private float speed = 7.5f;
 	private int i = 1;
-	private bool R60 = false;
-	public float XXX;
+	private bool ReverseBody = false;
+	public float ShakeBody;
 
 
 	//V2
@@ -46,14 +46,21 @@ public class PlayerController : MonoBehaviour {
 
 	void Start () {
 		Player = GameObject.Find("Player");
-		MoveTarget = new Vector3(1.29f,2.566f,0);
+
 
 		//V2 Cube
-		if (CubeV2 == true) {
+		if (CubeController.CubeType == 2) {
 			FloorL = 1;
+			FloorR = 1;
 			FloorMax = 5;
-			MoveTarget =  new Vector3(0.978f,2.59f,0.982f);
+			MoveTarget = new Vector3 (0.978f, 2.59f, 0.982f);
 			MoveDistance = 0.4f;
+		} else {
+			FloorL = 4;
+			FloorR = 1;
+			FloorMax = 8;
+			MoveTarget = new Vector3(1.29f,2.566f,0);
+			MoveDistance = 0.43f;
 		}
 
 	}
@@ -81,7 +88,7 @@ public class PlayerController : MonoBehaviour {
 			switch (MoveType) {
 
 		case"Forward":
-				XXX++;
+				ShakeBody++;
 				Head.transform.RotateAround (BrainA.transform.position, Vector3.left, speed / 6 * i);
 				HandLeft.transform.RotateAround (BrainA.transform.position, Vector3.forward, speed * i);
 				HandRight.transform.RotateAround (BrainA.transform.position, Vector3.forward, -speed * i);
@@ -92,7 +99,7 @@ public class PlayerController : MonoBehaviour {
 			break;
 
 			case"Back":
-			XXX++;
+			ShakeBody++;
 			Head.transform.RotateAround (BrainA.transform.position, Vector3.right, speed/6 * i);
 			HandLeft.transform.RotateAround (BrainA.transform.position, Vector3.back, speed * i);
 			HandRight.transform.RotateAround (BrainA.transform.position, Vector3.back, -speed * i);
@@ -103,7 +110,7 @@ public class PlayerController : MonoBehaviour {
 				break;
 
 			case"Left":
-			XXX++;
+			ShakeBody++;
 			Head.transform.RotateAround (BrainA.transform.position, Vector3.forward, -speed/6 * i);
 			HandLeft.transform.RotateAround (BrainA.transform.position, Vector3.left, speed * i);
 			HandRight.transform.RotateAround (BrainA.transform.position, Vector3.left, -speed * i);
@@ -114,7 +121,7 @@ public class PlayerController : MonoBehaviour {
 				break;
 
 			case"Right":
-			XXX++;
+			ShakeBody++;
 			Head.transform.RotateAround (BrainA.transform.position, Vector3.back, -speed/6 * i);
 			HandLeft.transform.RotateAround (BrainA.transform.position, Vector3.right, speed * i);
 			HandRight.transform.RotateAround (BrainA.transform.position, Vector3.right, -speed * i);
@@ -135,13 +142,13 @@ public class PlayerController : MonoBehaviour {
 
 
 
-		if (XXX >= BL)
-			R60 = true;
+		if (ShakeBody >= BodyLimit)
+			ReverseBody = true;
 
-		if (R60 == true) {
+		if (ReverseBody == true) {
 			i *= -1;
-			XXX= -BL;
-			R60 = false;
+			ShakeBody= -BodyLimit;
+			ReverseBody = false;
 		}
 
 
@@ -149,7 +156,6 @@ public class PlayerController : MonoBehaviour {
 
 
 	void FixedUpdate () {
-
 
 
 
@@ -205,7 +211,7 @@ public class PlayerController : MonoBehaviour {
 		}
 
 		if (Input.GetKey (KeyCode.RightArrow)) {
-			
+
 			if(OneShot == false){
 			Player.transform.rotation = Quaternion.Euler (0f, 0f, 0f);
 				if (FloorL > 0) {

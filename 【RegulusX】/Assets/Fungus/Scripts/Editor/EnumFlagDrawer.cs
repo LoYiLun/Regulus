@@ -25,6 +25,7 @@ namespace Fungus
             Enum enumNew = EditorGUI.EnumMaskField(position, propName, targetEnum);
             property.intValue = (int)Convert.ChangeType(enumNew, targetEnum.GetType());
             EditorGUI.EndProperty();
+
         }
 
         static T GetBaseProperty<T>(SerializedProperty prop)

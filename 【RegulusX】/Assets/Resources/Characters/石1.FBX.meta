@@ -1,35 +1,31 @@
 fileFormatVersion: 2
-guid: 914384289aa143e4b908ce01d9fcb215
-timeCreated: 1525273502
+guid: 44e6b04300d96d04591a694d20696c28
+timeCreated: 1526928216
 licenseType: Free
 ModelImporter:
   serializedVersion: 22
   fileIDToRecycleName:
-    100000: Cone001
-    100002: Cone002
-    100004: Cone003
-    100006: Cylinder001
-    100008: Group001
-    100010: //RootNode
-    400000: Cone001
-    400002: Cone002
-    400004: Cone003
-    400006: Cylinder001
-    400008: Group001
-    400010: //RootNode
-    2100000: No Name
-    2300000: Cone001
-    2300002: Cone002
-    2300004: Cone003
-    2300006: Cylinder001
-    3300000: Cone001
-    3300002: Cone002
-    3300004: Cone003
-    3300006: Cylinder001
-    4300000: Cone002
-    4300002: Cone003
-    4300004: Cylinder001
-    4300006: Cone001
+    100000: default
+    100002: default001
+    100004: default007
+    100006: //RootNode
+    400000: default
+    400002: default001
+    400004: default007
+    400006: //RootNode
+    2100000: _null_
+    2100002: _ro2_null_
+    2100004: _ro4_null_
+    2300000: default
+    2300002: default001
+    2300004: default007
+    3300000: default
+    3300002: default001
+    3300004: default007
+    4300000: default
+    4300002: default001
+    4300004: default007
+    9500000: //RootNode
   externalObjects: {}
   materials:
     importMaterials: 1
@@ -104,7 +100,7 @@ ModelImporter:
     hasExtraRoot: 0
     skeletonHasParents: 1
   lastHumanDescriptionAvatarSource: {instanceID: 0}
-  animationType: 0
+  animationType: 2
   humanoidOversampling: 1
   additionalBone: 0
   userData: 

@@ -21,7 +21,7 @@ public class CubeController : MonoBehaviour {
 	private int DY = 0;
 	private int DZ = 0;
 	private int A, B, K;
-	private float speed = 8f;
+	private float speed ;
 
 	private Vector3 target = new Vector3();
 	private bool moveState = false;
@@ -29,6 +29,7 @@ public class CubeController : MonoBehaviour {
 	public int floortemp;
 	public int childtemp;
 	private float i;
+	public static int CubeType;
 
 	//--------------------------------------------------------
 	void Start () {
@@ -38,6 +39,13 @@ public class CubeController : MonoBehaviour {
 		R_Button = GameObject.Find("R_Button");
 		Player = GameObject.Find("Player");
 		stab = GameObject.Find("stab");
+		CubeType = R_Button.transform.childCount / 6;
+
+		if (CubeType == 2) {
+			speed = 27f;
+		} else {
+			speed = 9f;
+		}
 
 
 	}
@@ -51,28 +59,28 @@ public class CubeController : MonoBehaviour {
 	{
 
 		//轉動場景
-			if (Input.GetKey ("w")) {
-			AllCube.transform.RotateAround (Vector3.zero, Vector3.back, speed/4 * Time.deltaTime);
+		if (Input.GetKey ("w")) {
+			AllCube.transform.RotateAround (CubeMom.transform.position, Vector3.forward, speed/4 * Time.deltaTime);
 			WatchMode ();
 			}
 			if (Input.GetKey ("a")) {
-			AllCube.transform.RotateAround (Vector3.zero, Vector3.up, speed/4 * Time.deltaTime);
+			AllCube.transform.RotateAround (CubeMom.transform.position, Vector3.up, speed/4 * Time.deltaTime);
 			WatchMode ();
 			}
 			if (Input.GetKey ("s")) {
-			AllCube.transform.RotateAround (Vector3.zero, Vector3.forward, speed/4 * Time.deltaTime);
+			AllCube.transform.RotateAround (CubeMom.transform.position, Vector3.back, speed/4 * Time.deltaTime);
 			WatchMode ();
 			}
 			if (Input.GetKey ("d")) {
-			AllCube.transform.RotateAround (Vector3.zero, Vector3.down, speed/4 * Time.deltaTime);
+			AllCube.transform.RotateAround (CubeMom.transform.position, Vector3.down, speed/4 * Time.deltaTime);
 			WatchMode ();
 			}
 			if (Input.GetKey ("q")) {
-			AllCube.transform.RotateAround (Vector3.zero, Vector3.right, speed/4 * Time.deltaTime);
+			AllCube.transform.RotateAround (CubeMom.transform.position, Vector3.right, speed/4 * Time.deltaTime);
 			WatchMode ();
 			}
 			if (Input.GetKey ("e")) {
-			AllCube.transform.RotateAround (Vector3.zero, Vector3.left, speed/4 * Time.deltaTime);
+			AllCube.transform.RotateAround (CubeMom.transform.position, Vector3.left, speed/4 * Time.deltaTime);
 			WatchMode ();
 			}
 			if (Input.GetKey ("space")) {
@@ -122,12 +130,16 @@ public class CubeController : MonoBehaviour {
 
 	//--------------------------------------------------------
 		//點擊轉動按鈕
+
+
+
 		switch(RotateNum){
+
 		case"Start":
 			StopMouse = true;
 			PlayerController.OneShot = true;
 			R_Button.SetActive (false);
-			if (CubeMom.transform.childCount >= 9 + childtemp)
+			if (CubeMom.transform.childCount >= CubeType * CubeType + childtemp)
 				CubeMom.transform.Rotate (new Vector3 (DX * speed * Time.deltaTime * 2, DY * speed * Time.deltaTime * 2, DZ * speed * Time.deltaTime * 2));
 			//Rotateto90用來計算已轉動的角度值，解決0~90與360~270不同變化的問題。
 			var RotateTo90 = Mathf.Abs (
@@ -149,7 +161,12 @@ public class CubeController : MonoBehaviour {
 				this.transform.parent = AllCube.transform;
 				Player.transform.parent = null;
 				FloorMom.transform.parent = null;
-				speed = 8f;
+
+				if (CubeType == 2) 
+					speed = 27f;
+				else 
+					speed = 9f;
+				
 				if(CubeMom.transform.childCount == 0)
 					RotateNum = "Stop";
 			}
@@ -166,27 +183,7 @@ public class CubeController : MonoBehaviour {
 			break;
 
 
-		/* 方法A
-		case"R1":
-			if (this.CubeL == 2) {
-				this.transform.parent = CubeMom.transform;
-				if (CubeMom.transform.childCount == 9) {
-					CubeMom.transform.Rotate (new Vector3 (0f, 0f, 0.5f));
-					if (CubeMom.transform.eulerAngles.z > 85) {
-						CubeMom.transform.rotation = Quaternion.Euler (0f, 0f, 90f);
-						this.transform.parent = null;
-						if(CubeMom.transform.childCount == 0)
-						RotateNum = null;
-					}
-				}
-			}
-			break;
-		*/
-
-
-
-
-		//方法B，取得轉動後新座標
+				
 		case"R1":
 			if (this.CubeL == 2 && Player.transform.position.z > -0.6) {
 				K = A = this.CubeD - 1;
@@ -531,9 +528,244 @@ public class CubeController : MonoBehaviour {
 			} else {
 				RotateNum = null;
 			}break;
-		}
 
-	}
+
+
+		case"2R1":
+				if (this.CubeL == 1 && Player.transform.position.z > 0.45f) {
+					K = A = this.CubeD;
+					A = B = this.CubeR;
+					B = 1-K;
+					this.CubeD = A;
+					this.CubeR = B;
+					DZ = 1;
+					DX = DY = 0;
+					this.transform.parent = CubeMom.transform;
+
+
+					RotateNum = "Start";
+				} else {
+					RotateNum = null;
+				}
+				break;
+
+		case"2R2":
+				if (this.CubeL == 0 && Player.transform.position.z < 0.45f) {
+
+					K = A = this.CubeD;
+					A = B = this.CubeR;
+					B = 1-K;
+					this.CubeD = A;
+					this.CubeR = B;
+					DZ = 1;
+					DX = DY = 0;
+					this.transform.parent = CubeMom.transform;
+
+
+					RotateNum = "Start";
+				} else {
+					RotateNum = null;
+				}
+				break;
+
+		case"2R3":
+				if (this.CubeD == 0) {
+
+					K = A = this.CubeL;
+					A = B = this.CubeR;
+					B = 1-K;
+					this.CubeL = A;
+					this.CubeR = B;
+					DY = -1;
+					DX = DZ = 0;
+					this.transform.parent = CubeMom.transform;
+					FloorMom.transform.parent = CubeMom.transform;//EX1
+					Player.transform.parent = CubeMom.transform;
+					childtemp = 2;
+
+					floortemp = PlayerController.FloorL;
+					PlayerController.FloorL = PlayerController.FloorR;
+					PlayerController.FloorR = 5 - floortemp;
+
+
+					RotateNum = "Start";
+				} else
+					RotateNum = null;break;
+
+		case"2R4":
+				if (this.CubeD == 1) {
+
+					K = A = this.CubeL;
+					A = B = this.CubeR;
+					B = 1-K;
+					this.CubeL = A;
+					this.CubeR = B;
+					DY = -1;
+					DX = DZ = 0;
+					this.transform.parent = CubeMom.transform;
+
+
+					RotateNum = "Start";
+				} else {
+					RotateNum = null;
+				}break;
+
+		case"2R5":
+				if (this.CubeR == 1 && Player.transform.position.x > 0.4f) {
+
+					K = A = this.CubeL;
+					A = B = this.CubeD;
+					B = 1-K;
+					this.CubeL = A;
+					this.CubeD = B;
+					DX = 1;
+					DY = DZ = 0;
+					this.transform.parent = CubeMom.transform;
+
+
+					RotateNum = "Start";
+				} else {
+					RotateNum = null;
+				}break;
+
+
+		case"2R6":
+				if (this.CubeR == 0 && Player.transform.position.x < 0.4f) {
+
+					K = A = this.CubeL;
+					A = B = this.CubeD;
+					B = 1-K;
+					this.CubeL = A;
+					this.CubeD = B;
+					DX = 1;
+					DY = DZ = 0;
+					this.transform.parent = CubeMom.transform;
+
+
+					RotateNum = "Start";
+				} else {
+					RotateNum = null;
+				}break;
+
+		case"2R7":
+				if (this.CubeL == 0 && Player.transform.position.z < 0.45f) {
+
+					K = A = this.CubeR;
+					A = B = this.CubeD;
+					B = 1-K;
+					this.CubeR = A;
+					this.CubeD = B;
+					DZ = -1;
+					DX = DY = 0;
+					this.transform.parent = CubeMom.transform;
+
+
+					RotateNum = "Start";
+				}  else {
+					RotateNum = null;
+				}break;
+
+		case"2R8":
+				if (this.CubeL == 1 && Player.transform.position.z > 0.45f) {
+
+					K = A = this.CubeR;
+					A = B = this.CubeD;
+					B = 1-K;
+					this.CubeR = A;
+					this.CubeD = B;
+					DZ = -1;
+					DX = DY = 0;
+					this.transform.parent = CubeMom.transform;
+
+
+					RotateNum = "Start";
+				} else {
+					RotateNum = null;
+				}break;
+
+		case"2R9":
+				if (this.CubeD == 1) {
+
+					K = A = this.CubeR;
+					A = B = this.CubeL;
+					B = 1-K;
+					this.CubeR = A;
+					this.CubeL = B;
+					DY = 1;
+					DX = DZ = 0;
+					this.transform.parent = CubeMom.transform;
+
+
+					RotateNum = "Start";
+				} else {
+					RotateNum = null;
+				}break;
+
+		case"2R10":
+				if (this.CubeD == 0) {
+
+					K = A = this.CubeR;
+					A = B = this.CubeL;
+					B = 1-K;
+					this.CubeR = A;
+					this.CubeL = B;
+					DY = 1;
+					DX = DZ = 0;
+					this.transform.parent = CubeMom.transform;
+					FloorMom.transform.parent = CubeMom.transform;
+					Player.transform.parent = CubeMom.transform;//EX2
+					childtemp = 2;
+
+					floortemp = PlayerController.FloorR;
+					PlayerController.FloorR = PlayerController.FloorL;
+					PlayerController.FloorL = 5 - floortemp;
+
+
+					RotateNum = "Start";
+				} else
+					RotateNum = null;break;
+
+		case"2R11":
+				if (this.CubeR == 0 && Player.transform.position.x < 0.4f) {
+
+					K = A = this.CubeD;
+					A = B = this.CubeL;
+					B = 1-K;
+					this.CubeD = A;
+					this.CubeL = B;
+					DX = -1;
+					DY = DZ = 0;
+					this.transform.parent = CubeMom.transform;
+
+
+					RotateNum = "Start";
+				} else {
+					RotateNum = null;
+				}break;
+
+		case"2R12":
+				if (this.CubeR == 1 && Player.transform.position.x > 0.4f) {
+
+					K = A = this.CubeD;
+					A = B = this.CubeL;
+					B = 1-K;
+					this.CubeD = A;
+					this.CubeL = B;
+					DX = -1;
+					DY = DZ = 0;
+					this.transform.parent = CubeMom.transform;
+
+
+					RotateNum = "Start";
+				} else {
+					RotateNum = null;
+				}break;
+			}
+
+		}
+			
+
+
 
 	void OnCollisionEnter(Collision other)
 	{    

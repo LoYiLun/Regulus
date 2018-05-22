@@ -10,12 +10,16 @@ public class CameraController : MonoBehaviour {
 	public GameObject camObj02;
 	private Vector3 Camera2Player;
 	public GameObject Player;
+	public static GameObject Talker;
+	private bool FollowPlayer = true;
 
 	void Awake(){
+		Camera02 = GameObject.Find ("Camera02");
+
 		Camera01.SetActive (false);
 		Camera02.SetActive (true);
 
-		camObj01.SetActive (false);
+		camObj01.SetActive (true);
 		camObj02.SetActive (true);
 	}
 
@@ -23,14 +27,18 @@ public class CameraController : MonoBehaviour {
 
 	void Start () {
 		Camera2Player = Camera02.transform.position - Player.transform.position;
+		Talker = Player;
 
 	}
 	
 	// Update is called once per frame
 	void FixedUpdate () {
-		
-		Camera02.transform.position = Player.transform.position + Camera2Player;
 
+		if (Input.GetKey ("c") == true || FollowPlayer) {
+			
+			Camera02.transform.position = Camera2Player + Talker.transform.position;
+			FollowPlayer = true;
+		}
 		/*if (Input.GetKey("o") == true)
 		{
 			//第一人稱視角
@@ -42,21 +50,22 @@ public class CameraController : MonoBehaviour {
 		if (Input.GetKey("x") == true)
 		{
 			//第三人稱視角(遠)
-			Camera02.SetActive(false);
+			/*Camera02.SetActive(false);
 			camObj02.SetActive(false);
 			Camera01.SetActive(true);
 			camObj01.SetActive(true);
-			CubeController.R_Button.SetActive (true);
+*/			FollowPlayer = false;
+			Camera02.transform.position = Vector3.MoveTowards (Camera02.transform.position, camObj01.transform.position, 10f * Time.deltaTime);
 		}
 		else if (Input.GetKey("z") == true)
 		{
 			//第三人稱視角(近)
-			Camera02.SetActive(true);
+/*			Camera02.SetActive(true);
 			camObj02.SetActive(true);
 			Camera01.SetActive(false);
-			camObj01.SetActive(false);
-			CubeController.R_Button.SetActive (false);
-
+			camObj01.SetActive(false);*/
+			FollowPlayer = false;
+			Camera02.transform.position = Vector3.MoveTowards (Camera02.transform.position, camObj02.transform.position, 10f * Time.deltaTime);
 		}
 
 	}
