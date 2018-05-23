@@ -7515,7 +7515,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &320653445
 MonoBehaviour:
   m_ObjectHideFlags: 2
@@ -30008,8 +30008,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.059112716, y: 0.05911274, z: 0.1176488}
-  m_Center: {x: 0.000000016763806, y: 0.000000001862645, z: -0.028468765}
+  m_Size: {x: 0.05, y: 0.05, z: 0.1176488}
+  m_Center: {x: 0, y: 0, z: -0.028468765}
 --- !u!4 &1809449903 stripped
 Transform:
   m_PrefabParentObject: {fileID: 400000, guid: de26a9abf5af3a5488050297b0d49f9b, type: 3}
@@ -32015,7 +32015,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1983687216962672, guid: 5ec8a805ec905f942a06a3a0bd1b66e4, type: 2}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 114296934349734332, guid: 5ec8a805ec905f942a06a3a0bd1b66e4,
         type: 2}
