@@ -1362,7 +1362,7 @@ ParticleSystem:
   moveWithTransform: 0
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: 883116016
+  randomSeed: -658332885
   InitialModule:
     serializedVersion: 3
     enabled: 1
@@ -4806,6 +4806,7 @@ MonoBehaviour:
   CubeR: 1
   CubeD: 0
   floortemp: 0
+  floortemp2: 0
   childtemp: 0
 --- !u!23 &245033186
 MeshRenderer:
@@ -5255,6 +5256,7 @@ MonoBehaviour:
   CubeR: 1
   CubeD: 1
   floortemp: 0
+  floortemp2: 0
   childtemp: 0
 --- !u!23 &298044935
 MeshRenderer:
@@ -5407,6 +5409,7 @@ MonoBehaviour:
   CubeR: 0
   CubeD: 0
   floortemp: 0
+  floortemp2: 0
   childtemp: 0
 --- !u!23 &307982662
 MeshRenderer:
@@ -7009,6 +7012,7 @@ MonoBehaviour:
   CubeR: 1
   CubeD: 1
   floortemp: 0
+  floortemp2: 0
   childtemp: 0
 --- !u!23 &445045773
 MeshRenderer:
@@ -8105,6 +8109,7 @@ MonoBehaviour:
   CubeR: 0
   CubeD: 0
   floortemp: 0
+  floortemp2: 0
   childtemp: 0
 --- !u!23 &581224716
 MeshRenderer:
@@ -9162,6 +9167,12 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 7b8f56ebb0cf4b84d8b19060c53a1ca2, type: 2}
   m_IsPrefabParent: 0
+--- !u!114 &668119411 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114286014260794724, guid: 7b8f56ebb0cf4b84d8b19060c53a1ca2,
+    type: 2}
+  m_PrefabInternal: {fileID: 668119410}
+  m_Script: {fileID: 11500000, guid: 7a334fe2ffb574b3583ff3b18b4792d3, type: 3}
 --- !u!1 &668485967
 GameObject:
   m_ObjectHideFlags: 0
@@ -14773,6 +14784,7 @@ MonoBehaviour:
   CubeR: 0
   CubeD: 1
   floortemp: 0
+  floortemp2: 0
   childtemp: 0
 --- !u!23 &979364326
 MeshRenderer:
@@ -16840,6 +16852,7 @@ MonoBehaviour:
   CubeR: 9
   CubeD: 9
   floortemp: 0
+  floortemp2: 0
   childtemp: 0
 --- !u!4 &1201359847
 Transform:
@@ -17184,6 +17197,7 @@ MonoBehaviour:
   CubeR: 0
   CubeD: 1
   floortemp: 0
+  floortemp2: 0
   childtemp: 0
 --- !u!23 &1271861431
 MeshRenderer:
@@ -19837,12 +19851,6 @@ MonoBehaviour:
   stopVoiceover: 1
   waitForVO: 0
   setSayDialog: {fileID: 0}
---- !u!114 &1479757812 stripped
-MonoBehaviour:
-  m_PrefabParentObject: {fileID: 114286014260794724, guid: 7b8f56ebb0cf4b84d8b19060c53a1ca2,
-    type: 2}
-  m_PrefabInternal: {fileID: 668119410}
-  m_Script: {fileID: 11500000, guid: 7a334fe2ffb574b3583ff3b18b4792d3, type: 3}
 --- !u!1 &1482025006
 GameObject:
   m_ObjectHideFlags: 0
@@ -22267,7 +22275,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 61dddfdc5e0e44ca298d8f46f7f5a915, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  selectedFlowchart: {fileID: 1479757812}
+  selectedFlowchart: {fileID: 668119411}
 --- !u!4 &1822966204
 Transform:
   m_ObjectHideFlags: 1
@@ -22434,6 +22442,7 @@ MonoBehaviour:
   CubeR: 1
   CubeD: 0
   floortemp: 0
+  floortemp2: 0
   childtemp: 0
 --- !u!23 &1843381466
 MeshRenderer:
@@ -23930,6 +23939,7 @@ MonoBehaviour:
   CubeR: 9
   CubeD: 9
   floortemp: 0
+  floortemp2: 0
   childtemp: 0
 --- !u!4 &2103812027
 Transform:

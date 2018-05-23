@@ -54,7 +54,7 @@ public class PlayerController : MonoBehaviour {
 			FloorR = 1;
 			FloorMax = 5;
 			MoveTarget = new Vector3 (0.922f, 2.59f, 0.982f);
-			MoveDistance = 0.4f;
+			MoveDistance = 0.404f;
 		} else {
 			FloorL = 4;
 			FloorR = 1;

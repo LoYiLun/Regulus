@@ -27,6 +27,7 @@ public class CubeController : MonoBehaviour {
 	private bool moveState = false;
 	private bool StopMouse = false;
 	public int floortemp;
+	public int floortemp2;
 	public int childtemp;
 	private float i;
 	public static int CubeType;
@@ -583,9 +584,9 @@ public class CubeController : MonoBehaviour {
 					Player.transform.parent = CubeMom.transform;
 					childtemp = 2;
 
-					floortemp = PlayerController.FloorL;
+					floortemp2 = PlayerController.FloorL;
 					PlayerController.FloorL = PlayerController.FloorR;
-					PlayerController.FloorR = 5 - floortemp;
+					PlayerController.FloorR = 5 - floortemp2;
 
 
 					RotateNum = "Start";
@@ -716,9 +717,9 @@ public class CubeController : MonoBehaviour {
 					Player.transform.parent = CubeMom.transform;//EX2
 					childtemp = 2;
 
-					floortemp = PlayerController.FloorR;
+					floortemp2 = PlayerController.FloorR;
 					PlayerController.FloorR = PlayerController.FloorL;
-					PlayerController.FloorL = 5 - floortemp;
+					PlayerController.FloorL = 5 - floortemp2;
 
 
 					RotateNum = "Start";
