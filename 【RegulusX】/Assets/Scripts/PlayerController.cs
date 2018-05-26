@@ -242,6 +242,7 @@ public class PlayerController : MonoBehaviour {
 				moveState = false;
 			}
 			if (ICanGo == false) {
+				
 				MoveTarget = TargetTemp;
 				FloorR = FTR;
 				FloorL = FTL;

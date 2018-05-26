@@ -16,7 +16,8 @@ public class PlayerSight : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		
+
+
 
 		
 		if (Mathf.Abs (Obstacle.transform.position.x - Player.transform.position.x) + Mathf.Abs (Obstacle.transform.position.z - Player.transform.position.z) < ObstacleToPlayer
@@ -30,4 +31,6 @@ public class PlayerSight : MonoBehaviour {
 			Obstacle.GetComponent<Renderer> ().material = Resources.Load ("Tree", typeof(Material)) as Material;
 		}
 	}
+
+
 }
