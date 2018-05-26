@@ -1362,7 +1362,7 @@ ParticleSystem:
   moveWithTransform: 0
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: -658332885
+  randomSeed: -1591087502
   InitialModule:
     serializedVersion: 3
     enabled: 1
@@ -6043,8 +6043,7 @@ MonoBehaviour:
 --- !u!114 &320653464
 MonoBehaviour:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 114228837857033412, guid: 6a4eb85da87cd3c47bdaf268d5754116,
-    type: 2}
+  m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 320653444}
   m_Enabled: 1
@@ -6078,7 +6077,8 @@ MonoBehaviour:
     height: 859
   selectedBlocks:
   - {fileID: 320653457}
-  selectedCommands: []
+  selectedCommands:
+  - {fileID: 320653453}
   variables: []
   description: 
   stepPause: 0
@@ -8829,7 +8829,7 @@ Prefab:
         type: 2}
       propertyPath: selectedBlocks.Array.data[0]
       value: 
-      objectReference: {fileID: 1479757760}
+      objectReference: {fileID: 1479757811}
     - target: {fileID: 114387677824295246, guid: 7b8f56ebb0cf4b84d8b19060c53a1ca2,
         type: 2}
       propertyPath: targetFlowchart
@@ -9167,12 +9167,6 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 7b8f56ebb0cf4b84d8b19060c53a1ca2, type: 2}
   m_IsPrefabParent: 0
---- !u!114 &668119411 stripped
-MonoBehaviour:
-  m_PrefabParentObject: {fileID: 114286014260794724, guid: 7b8f56ebb0cf4b84d8b19060c53a1ca2,
-    type: 2}
-  m_PrefabInternal: {fileID: 668119410}
-  m_Script: {fileID: 11500000, guid: 7a334fe2ffb574b3583ff3b18b4792d3, type: 3}
 --- !u!1 &668485967
 GameObject:
   m_ObjectHideFlags: 0
@@ -18854,12 +18848,6 @@ MonoBehaviour:
     type: 2}
   m_PrefabInternal: {fileID: 668119410}
   m_Script: {fileID: 11500000, guid: 050fb9e6e72f442b3b883da8a965bdeb, type: 3}
---- !u!114 &1479757760 stripped
-MonoBehaviour:
-  m_PrefabParentObject: {fileID: 114891167833199170, guid: 7b8f56ebb0cf4b84d8b19060c53a1ca2,
-    type: 2}
-  m_PrefabInternal: {fileID: 668119410}
-  m_Script: {fileID: 11500000, guid: 3d3d73aef2cfc4f51abf34ac00241f60, type: 3}
 --- !u!114 &1479757770
 MonoBehaviour:
   m_ObjectHideFlags: 2
@@ -19851,6 +19839,12 @@ MonoBehaviour:
   stopVoiceover: 1
   waitForVO: 0
   setSayDialog: {fileID: 0}
+--- !u!114 &1479757811 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114559719950123038, guid: 7b8f56ebb0cf4b84d8b19060c53a1ca2,
+    type: 2}
+  m_PrefabInternal: {fileID: 668119410}
+  m_Script: {fileID: 11500000, guid: 3d3d73aef2cfc4f51abf34ac00241f60, type: 3}
 --- !u!1 &1482025006
 GameObject:
   m_ObjectHideFlags: 0
@@ -22275,7 +22269,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 61dddfdc5e0e44ca298d8f46f7f5a915, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  selectedFlowchart: {fileID: 668119411}
+  selectedFlowchart: {fileID: 114070644894161632, guid: 6a4eb85da87cd3c47bdaf268d5754116,
+    type: 2}
 --- !u!4 &1822966204
 Transform:
   m_ObjectHideFlags: 1
@@ -23526,7 +23521,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1983687216962672, guid: 5ec8a805ec905f942a06a3a0bd1b66e4, type: 2}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 114296934349734332, guid: 5ec8a805ec905f942a06a3a0bd1b66e4,
         type: 2}

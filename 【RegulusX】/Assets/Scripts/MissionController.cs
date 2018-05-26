@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using Fungus;
 
 public class MissionController : MonoBehaviour {
@@ -39,11 +40,16 @@ public class MissionController : MonoBehaviour {
 	private bool L2M2_GiveWater;
 	private bool L2M3_FindCalender;
 	private bool L2M3_GiveCalender;
+    Scene CheckSceneWhetherIs2orNot;//檢查場景是否為level2，為了解除錯誤報告而已。
 
 	// Use this for initialization
 	void Start () {
-		W_Collider = WateringCan.GetComponent<Collider>();
-		WB_Collider = WaterBottle.GetComponent<Collider>();
+        CheckSceneWhetherIs2orNot = SceneManager.GetActiveScene();
+        W_Collider = WateringCan.GetComponent<Collider>();
+        if(CheckSceneWhetherIs2orNot.name == "level2")//我改成是Level2才啟用，不然序章會一直有紅色錯誤，U點礙眼。
+        {
+            WB_Collider = WaterBottle.GetComponent<Collider>();
+        }		
 		MissionObj = NoItem;
 		NoItem = GameObject.Find ("NoItem");
 
