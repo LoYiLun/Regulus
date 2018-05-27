@@ -14,6 +14,9 @@ public class PlayerController : MonoBehaviour {
 	public static int FloorR;
 	public static int FloorL;
 	public static int FloorMax;
+	public static int FloorR2;
+	public static int FloorL2;
+	public static int FloorMax2;
 	public static Vector3 MoveTarget;
 	private int FTR;
 	private int FTL;
@@ -69,9 +72,15 @@ public class PlayerController : MonoBehaviour {
 
 	void OnCollisionEnter(Collision Noway)
 	{
-		if (Noway.gameObject.tag == "Obstacle")
+		if (Noway.gameObject.tag == "Obstacle") {
+			Debug.Log ("001");
 			ICanGo = false;
-		
+			if (Noway.gameObject.layer == 0) {
+				ObstacleController.Hit = true;
+				ObstacleController.HitName = Noway.gameObject.name;
+			}
+
+		}
 		if (Noway.gameObject.tag == "Ice")
 			OnIce = true;
 	}

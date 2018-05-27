@@ -22281,8 +22281,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 61dddfdc5e0e44ca298d8f46f7f5a915, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  selectedFlowchart: {fileID: 114070644894161632, guid: 6a4eb85da87cd3c47bdaf268d5754116,
-    type: 2}
+  selectedFlowchart: {fileID: 1465423488}
 --- !u!4 &1822966204
 Transform:
   m_ObjectHideFlags: 1
@@ -23533,7 +23532,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1983687216962672, guid: 5ec8a805ec905f942a06a3a0bd1b66e4, type: 2}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 114296934349734332, guid: 5ec8a805ec905f942a06a3a0bd1b66e4,
         type: 2}
