@@ -257,9 +257,9 @@ public class CubeController : MonoBehaviour {
 				Player.transform.parent = CubeMom.transform;
 				childtemp = 2;
 
-				floortemp = PlayerController.FloorL;
+				/*floortemp = PlayerController.FloorL;
 				PlayerController.FloorL = PlayerController.FloorR;
-				PlayerController.FloorR = 8 - floortemp;
+				PlayerController.FloorR = 8 - floortemp;*/
 
 				
 				RotateNum = "Start";
@@ -465,9 +465,9 @@ public class CubeController : MonoBehaviour {
 				Player.transform.parent = CubeMom.transform;//EX2
 				childtemp = 2;
 
-				floortemp = PlayerController.FloorR;
+				/*floortemp = PlayerController.FloorR;
 				PlayerController.FloorR = PlayerController.FloorL;
-				PlayerController.FloorL = 8 - floortemp;
+				PlayerController.FloorL = 8 - floortemp;*/
 
 				
 				RotateNum = "Start";
@@ -584,9 +584,9 @@ public class CubeController : MonoBehaviour {
 					Player.transform.parent = CubeMom.transform;
 					childtemp = 2;
 
-					floortemp2 = PlayerController.FloorL;
+					/*floortemp2 = PlayerController.FloorL;
 					PlayerController.FloorL = PlayerController.FloorR;
-					PlayerController.FloorR = 5 - floortemp2;
+					PlayerController.FloorR = 5 - floortemp2;*/
 
 
 					RotateNum = "Start";
@@ -717,9 +717,9 @@ public class CubeController : MonoBehaviour {
 					Player.transform.parent = CubeMom.transform;//EX2
 					childtemp = 2;
 
-					floortemp2 = PlayerController.FloorR;
+					/*floortemp2 = PlayerController.FloorR;
 					PlayerController.FloorR = PlayerController.FloorL;
-					PlayerController.FloorL = 5 - floortemp2;
+					PlayerController.FloorL = 5 - floortemp2;*/
 
 
 					RotateNum = "Start";

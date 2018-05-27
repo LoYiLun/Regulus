@@ -55,7 +55,7 @@ public class PlayerController : MonoBehaviour {
 		if (CubeController.CubeType == 2) {
 			FloorL = 1;
 			FloorR = 1;
-			FloorMax = 5;
+			FloorMax = 100;
 			MoveTarget = new Vector3 (0.922f, 2.59f, 0.982f);
 			MoveDistance = 0.404f;
 		} else {
@@ -75,7 +75,7 @@ public class PlayerController : MonoBehaviour {
 		if (Noway.gameObject.tag == "Obstacle") {
 			Debug.Log ("001");
 			ICanGo = false;
-			if (Noway.gameObject.layer == 0) {
+			if (Noway.gameObject.layer == 9) {
 				ObstacleController.Hit = true;
 				ObstacleController.HitName = Noway.gameObject.name;
 			}
@@ -174,7 +174,7 @@ public class PlayerController : MonoBehaviour {
 
 			if (OneShot == false) {
 				Player.transform.rotation = Quaternion.Euler (0f, 270f, 0f);
-				if (FloorR < FloorMax) {
+				if (FloorR == FloorR) {
 					SavePosition ();
 					MoveTarget -= new Vector3 (MoveDistance, 0f, 0f);
 					FloorR += 1;
@@ -191,7 +191,7 @@ public class PlayerController : MonoBehaviour {
 
 			if (OneShot == false) {
 				Player.transform.rotation = Quaternion.Euler (0f, 90f, 0f);
-				if (FloorR > 0) {
+				if (FloorR == FloorR) {
 					SavePosition ();
 					MoveTarget += new Vector3 (MoveDistance, 0f, 0f);
 					FloorR -= 1;
@@ -207,7 +207,7 @@ public class PlayerController : MonoBehaviour {
 
 			if (OneShot == false) {
 				Player.transform.rotation = Quaternion.Euler (0f, 180f, 0f);
-				if (FloorL < FloorMax) {
+				if (FloorL == FloorL) {
 					SavePosition ();
 					MoveTarget -= new Vector3 (0f, 0f, MoveDistance);
 					FloorL += 1;
@@ -223,7 +223,7 @@ public class PlayerController : MonoBehaviour {
 
 			if(OneShot == false){
 			Player.transform.rotation = Quaternion.Euler (0f, 0f, 0f);
-				if (FloorL > 0) {
+				if (FloorL == FloorL) {
 					SavePosition ();
 					MoveTarget += new Vector3 (0f, 0f, MoveDistance);
 					FloorL -= 1;
