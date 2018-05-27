@@ -10,6 +10,8 @@ public class ObstacleController : MonoBehaviour {
 	private float OB_Distance;
 
 	private Animator anim;
+	private AudioSource TreeSound;
+	private bool SoundIsPlaying;
 	public bool HitFinish = false;
 	public static bool Hit = false;
 	public static string HitName;
@@ -19,6 +21,7 @@ public class ObstacleController : MonoBehaviour {
 		Obstacle = gameObject;
 		Player = GameObject.Find ("Player");
 		anim = Obstacle.GetComponent<Animator>();
+		TreeSound = GameObject.Find("TreeSound").GetComponent<AudioSource> ();
 
 	}
 
@@ -30,14 +33,18 @@ public class ObstacleController : MonoBehaviour {
 
 		if (Hit) {
 			if (anim.runtimeAnimatorController != null) {
-				Debug.Log ("002");
+				
 				anim = GameObject.Find (HitName).GetComponent<Animator> ();
+
 				PlayerController.moveState = false;
 				anim.SetBool ("BeHit", true);
-
-				if (HitFinish) {
+				if(SoundIsPlaying == false){
+				TreeSound.Play();
+					SoundIsPlaying = true;
+				}if (HitFinish) {
 					anim.SetBool ("BeHit", false);
 					PlayerController.moveState = true;
+					SoundIsPlaying = false;
 					HitFinish = false;
 					Hit = false;
 

@@ -84,7 +84,7 @@ public class MissionController : MonoBehaviour {
 				AnimationController.GetItem = true;
 				L1M1_FirstGetWater = true;
 				W_Collider.enabled = !W_Collider.enabled;
-				WateringCan.GetComponent<Renderer> ().material = Resources.Load("Glass01", typeof(Material)) as Material;
+				WateringCan.GetComponent<Renderer> ().material = Resources.Load("Characters/Asher0528/Materials/M_WateringCan", typeof(Material)) as Material;
 
 				Flowchart.BroadcastFungusMessage ("GotWaterCan");
 			}
@@ -95,7 +95,7 @@ public class MissionController : MonoBehaviour {
 				//WateringCan.SetActive (false);
 				L1M2_FindWind = true;
 				L1M1_FirstGetWater = false;
-				WateringCan.GetComponent<Renderer> ().material = Resources.Load("Glass01", typeof(Material)) as Material;
+				WateringCan.GetComponent<Renderer> ().material = Resources.Load("Characters/Asher0528/Materials/M_WateringCan", typeof(Material)) as Material;
 
 				Flowchart.BroadcastFungusMessage ("RoseGotWater");
 			}
@@ -149,7 +149,7 @@ public class MissionController : MonoBehaviour {
 				ItemHead = Rose;
 				ItemGoUp = 0.2f;
 				AnimationController.GetItem = true;
-				WateringCan.GetComponent<Renderer> ().material = Resources.Load ("Glass01", typeof(Material)) as Material;
+				WateringCan.GetComponent<Renderer> ().material = Resources.Load ("Characters/Asher0528/Materials/M_WateringCan", typeof(Material)) as Material;
 				L1M3_LastFeedRose = false;
                 
 				Flowchart.BroadcastFungusMessage("LastFeedWater");

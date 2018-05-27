@@ -25,6 +25,7 @@ public class PlayerController : MonoBehaviour {
 	public static bool ICanGo = true;
 	public static bool OneShot = false;
 
+
 	//主角身體部位
 	public string MoveType;
 	public GameObject Head;
@@ -42,14 +43,15 @@ public class PlayerController : MonoBehaviour {
 	private int i = 1;
 	private bool ReverseBody = false;
 	public float ShakeBody;
-
+	private bool SoundIsPlaying;
+	private AudioSource WalkSound;
 
 	//V2
 	public static bool CubeV2 = true;
 
 	void Start () {
 		Player = GameObject.Find("Player");
-
+		WalkSound = GameObject.Find("WalkSound").GetComponent<AudioSource> ();
 
 		//V2 Cube
 		if (CubeController.CubeType == 2) {
@@ -58,6 +60,7 @@ public class PlayerController : MonoBehaviour {
 			FloorMax = 100;
 			MoveTarget = new Vector3 (0.922f, 2.59f, 0.982f);
 			MoveDistance = 0.404f;
+			//MoveDistance = 0.404f;
 		} else {
 			FloorL = 4;
 			FloorR = 1;
@@ -170,8 +173,8 @@ public class PlayerController : MonoBehaviour {
 
 		//九宮格走路
 		//print (FloorR);
-		if (Input.GetKey (KeyCode.UpArrow)) {
-
+		if (Input.GetKey ("w")) {
+			CubeController.R_Button.transform.GetComponentInChildren<BoxCollider>().enabled = false;
 			if (OneShot == false) {
 				Player.transform.rotation = Quaternion.Euler (0f, 270f, 0f);
 				if (FloorR == FloorR) {
@@ -187,8 +190,8 @@ public class PlayerController : MonoBehaviour {
 			}
 		}
 
-		if (Input.GetKey (KeyCode.DownArrow)) {
-
+		if (Input.GetKey ("s")) {
+			CubeController.R_Button.transform.GetComponentInChildren<BoxCollider>().enabled = false;
 			if (OneShot == false) {
 				Player.transform.rotation = Quaternion.Euler (0f, 90f, 0f);
 				if (FloorR == FloorR) {
@@ -203,8 +206,8 @@ public class PlayerController : MonoBehaviour {
 			}
 		}
 
-		if (Input.GetKey (KeyCode.LeftArrow)) {
-
+		if (Input.GetKey ("a")) {
+			CubeController.R_Button.transform.GetComponentInChildren<BoxCollider>().enabled = false;
 			if (OneShot == false) {
 				Player.transform.rotation = Quaternion.Euler (0f, 180f, 0f);
 				if (FloorL == FloorL) {
@@ -219,8 +222,8 @@ public class PlayerController : MonoBehaviour {
 			}
 		}
 
-		if (Input.GetKey (KeyCode.RightArrow)) {
-
+		if (Input.GetKey ("d")) {
+			CubeController.R_Button.transform.GetComponentInChildren<BoxCollider>().enabled = false;
 			if(OneShot == false){
 			Player.transform.rotation = Quaternion.Euler (0f, 0f, 0f);
 				if (FloorL == FloorL) {
@@ -237,6 +240,11 @@ public class PlayerController : MonoBehaviour {
 
 		if (moveState) {
 
+			if (SoundIsPlaying == false) {
+				WalkSound.Play ();
+				SoundIsPlaying = true;
+				}
+
 			if (PlayerHome.transform.childCount < 1) {
 				Player2 = Instantiate (PlayerStep);
 				Player2.transform.parent = PlayerHome.transform;
@@ -248,6 +256,7 @@ public class PlayerController : MonoBehaviour {
 			if (Vector3.Distance (Player.transform.position, MoveTarget) < 0.01f) {
 				ICanGo = true;
 				OneShot = false;
+				SoundIsPlaying = false;
 				moveState = false;
 			}
 			if (ICanGo == false) {

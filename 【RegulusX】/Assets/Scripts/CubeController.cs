@@ -60,7 +60,7 @@ public class CubeController : MonoBehaviour {
 	{
 
 		//轉動場景
-		if (Input.GetKey ("w")) {
+		/*if (Input.GetKey ("w")) {
 			AllCube.transform.RotateAround (CubeMom.transform.position, Vector3.forward, speed/4 * Time.deltaTime);
 			WatchMode ();
 			}
@@ -83,12 +83,13 @@ public class CubeController : MonoBehaviour {
 			if (Input.GetKey ("e")) {
 			AllCube.transform.RotateAround (CubeMom.transform.position, Vector3.left, speed/4 * Time.deltaTime);
 			WatchMode ();
-			}
-			if (Input.GetKey ("space")) {
+			}*/
+			if (Input.GetKeyDown ("space")) {
 				AllCube.transform.rotation = Quaternion.Euler (0, 0, 0);
 				Player.SetActive (true);
 				R_Button.SetActive (true);
 				R_Button.transform.rotation = Quaternion.Euler (0, 0, 0);
+			RotateNum = "Stop";
 			}
 
 
@@ -175,9 +176,11 @@ public class CubeController : MonoBehaviour {
 
 		case "Stop":
 			childtemp = 0;
+			//GameObject.Find ("InvisibleWall").transform.GetComponentInChildren<BoxCollider> ().enabled = true;
 			CubeMom.transform.rotation = Quaternion.Euler (0, 0, 0);
 			PlayerController.MoveTarget = Player.transform.position;
 			PlayerController.OneShot = false;
+			PlayerController.moveState = true;
 			R_Button.SetActive (true);
 			StopMouse = false;
 			RotateNum = null;
@@ -572,6 +575,9 @@ public class CubeController : MonoBehaviour {
 		case"2R3":
 				if (this.CubeD == 0) {
 
+				PlayerController.moveState = false;
+				//GameObject.Find ("InvisibleWall").transform.GetComponentInChildren<BoxCollider> ().enabled = false;
+
 					K = A = this.CubeL;
 					A = B = this.CubeR;
 					B = 1-K;
@@ -704,6 +710,9 @@ public class CubeController : MonoBehaviour {
 
 		case"2R10":
 				if (this.CubeD == 0) {
+
+					PlayerController.moveState = false;
+				//GameObject.Find ("InvisibleWall").transform.GetComponentInChildren<BoxCollider> ().enabled = false;
 
 					K = A = this.CubeR;
 					A = B = this.CubeL;
