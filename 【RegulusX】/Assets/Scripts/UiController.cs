@@ -16,6 +16,10 @@ public class UiController : MonoBehaviour {
     // Update is called once per frame
     void Update () { 
         LockPlayer();
+        if (Input.GetKeyDown(KeyCode.O))
+        {
+            Flowchart.BroadcastFungusMessage("EscGameOperation");
+        }
     }
     public static bool Talking
     {
