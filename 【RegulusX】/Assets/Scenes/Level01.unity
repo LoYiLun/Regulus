@@ -4195,9 +4195,9 @@ GameObject:
   - component: {fileID: 184384002}
   - component: {fileID: 184384001}
   - component: {fileID: 184384000}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: 2R12
-  m_TagString: Untagged
+  m_TagString: R-Button
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4649,9 +4649,9 @@ GameObject:
   - component: {fileID: 203114770}
   - component: {fileID: 203114769}
   - component: {fileID: 203114768}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: 2R4
-  m_TagString: Untagged
+  m_TagString: R-Button
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5040,7 +5040,7 @@ ParticleSystem:
   moveWithTransform: 0
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: 177415258
+  randomSeed: 1740227063
   InitialModule:
     serializedVersion: 3
     enabled: 1
@@ -19835,12 +19835,6 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 7b8f56ebb0cf4b84d8b19060c53a1ca2, type: 2}
   m_IsPrefabParent: 0
---- !u!114 &668119411 stripped
-MonoBehaviour:
-  m_PrefabParentObject: {fileID: 114286014260794724, guid: 7b8f56ebb0cf4b84d8b19060c53a1ca2,
-    type: 2}
-  m_PrefabInternal: {fileID: 668119410}
-  m_Script: {fileID: 11500000, guid: 7a334fe2ffb574b3583ff3b18b4792d3, type: 3}
 --- !u!1 &677280141
 GameObject:
   m_ObjectHideFlags: 0
@@ -26277,9 +26271,9 @@ GameObject:
   - component: {fileID: 926546284}
   - component: {fileID: 926546283}
   - component: {fileID: 926546282}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: 2R8
-  m_TagString: Untagged
+  m_TagString: R-Button
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -27100,9 +27094,9 @@ GameObject:
   - component: {fileID: 949874700}
   - component: {fileID: 949874699}
   - component: {fileID: 949874698}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: 2R1
-  m_TagString: Untagged
+  m_TagString: R-Button
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -34732,9 +34726,9 @@ GameObject:
   - component: {fileID: 1139144888}
   - component: {fileID: 1139144887}
   - component: {fileID: 1139144886}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: 2R11
-  m_TagString: Untagged
+  m_TagString: R-Button
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -35139,9 +35133,9 @@ GameObject:
   - component: {fileID: 1150447543}
   - component: {fileID: 1150447542}
   - component: {fileID: 1150447541}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: 2R2
-  m_TagString: Untagged
+  m_TagString: R-Button
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -36359,9 +36353,9 @@ GameObject:
   - component: {fileID: 1200459076}
   - component: {fileID: 1200459075}
   - component: {fileID: 1200459074}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: 2R10
-  m_TagString: Untagged
+  m_TagString: R-Button
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -40634,9 +40628,9 @@ GameObject:
   - component: {fileID: 1458194630}
   - component: {fileID: 1458194629}
   - component: {fileID: 1458194628}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: 2R9
-  m_TagString: Untagged
+  m_TagString: R-Button
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -43576,9 +43570,9 @@ GameObject:
   - component: {fileID: 1542821735}
   - component: {fileID: 1542821734}
   - component: {fileID: 1542821733}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: 2R7
-  m_TagString: Untagged
+  m_TagString: R-Button
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -44567,7 +44561,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 100000, guid: f78e3b3433c8e07408d67c4b79021309, type: 3}
       propertyPath: m_TagString
-      value: Untagged
+      value: Obstacle
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: f78e3b3433c8e07408d67c4b79021309, type: 3}
       propertyPath: m_LocalScale.y
@@ -48766,6 +48760,102 @@ Prefab:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1002583204667678, guid: 3438ddb443e5e854398fb029adf3bfa8, type: 2}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 1702608587780630, guid: 3438ddb443e5e854398fb029adf3bfa8, type: 2}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 1968336314264564, guid: 3438ddb443e5e854398fb029adf3bfa8, type: 2}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 1192924957504346, guid: 3438ddb443e5e854398fb029adf3bfa8, type: 2}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 1675263663158066, guid: 3438ddb443e5e854398fb029adf3bfa8, type: 2}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 1986927674232004, guid: 3438ddb443e5e854398fb029adf3bfa8, type: 2}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 1314200819259000, guid: 3438ddb443e5e854398fb029adf3bfa8, type: 2}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 1849881428657264, guid: 3438ddb443e5e854398fb029adf3bfa8, type: 2}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 1270107976361744, guid: 3438ddb443e5e854398fb029adf3bfa8, type: 2}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 1509996402393304, guid: 3438ddb443e5e854398fb029adf3bfa8, type: 2}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 1432255123881376, guid: 3438ddb443e5e854398fb029adf3bfa8, type: 2}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 1093842084970864, guid: 3438ddb443e5e854398fb029adf3bfa8, type: 2}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 1002583204667678, guid: 3438ddb443e5e854398fb029adf3bfa8, type: 2}
+      propertyPath: m_TagString
+      value: R-Button
+      objectReference: {fileID: 0}
+    - target: {fileID: 1702608587780630, guid: 3438ddb443e5e854398fb029adf3bfa8, type: 2}
+      propertyPath: m_TagString
+      value: R-Button
+      objectReference: {fileID: 0}
+    - target: {fileID: 1968336314264564, guid: 3438ddb443e5e854398fb029adf3bfa8, type: 2}
+      propertyPath: m_TagString
+      value: R-Button
+      objectReference: {fileID: 0}
+    - target: {fileID: 1192924957504346, guid: 3438ddb443e5e854398fb029adf3bfa8, type: 2}
+      propertyPath: m_TagString
+      value: R-Button
+      objectReference: {fileID: 0}
+    - target: {fileID: 1675263663158066, guid: 3438ddb443e5e854398fb029adf3bfa8, type: 2}
+      propertyPath: m_TagString
+      value: R-Button
+      objectReference: {fileID: 0}
+    - target: {fileID: 1986927674232004, guid: 3438ddb443e5e854398fb029adf3bfa8, type: 2}
+      propertyPath: m_TagString
+      value: R-Button
+      objectReference: {fileID: 0}
+    - target: {fileID: 1314200819259000, guid: 3438ddb443e5e854398fb029adf3bfa8, type: 2}
+      propertyPath: m_TagString
+      value: R-Button
+      objectReference: {fileID: 0}
+    - target: {fileID: 1849881428657264, guid: 3438ddb443e5e854398fb029adf3bfa8, type: 2}
+      propertyPath: m_TagString
+      value: R-Button
+      objectReference: {fileID: 0}
+    - target: {fileID: 1270107976361744, guid: 3438ddb443e5e854398fb029adf3bfa8, type: 2}
+      propertyPath: m_TagString
+      value: R-Button
+      objectReference: {fileID: 0}
+    - target: {fileID: 1509996402393304, guid: 3438ddb443e5e854398fb029adf3bfa8, type: 2}
+      propertyPath: m_TagString
+      value: R-Button
+      objectReference: {fileID: 0}
+    - target: {fileID: 1432255123881376, guid: 3438ddb443e5e854398fb029adf3bfa8, type: 2}
+      propertyPath: m_TagString
+      value: R-Button
+      objectReference: {fileID: 0}
+    - target: {fileID: 1093842084970864, guid: 3438ddb443e5e854398fb029adf3bfa8, type: 2}
+      propertyPath: m_TagString
+      value: R-Button
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 3438ddb443e5e854398fb029adf3bfa8, type: 2}
   m_IsPrefabParent: 0
@@ -50795,7 +50885,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 61dddfdc5e0e44ca298d8f46f7f5a915, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  selectedFlowchart: {fileID: 668119411}
+  selectedFlowchart: {fileID: 320653465}
 --- !u!4 &1822966204
 Transform:
   m_ObjectHideFlags: 1
@@ -51555,9 +51645,9 @@ GameObject:
   - component: {fileID: 1882846932}
   - component: {fileID: 1882846931}
   - component: {fileID: 1882846930}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: 2R6
-  m_TagString: Untagged
+  m_TagString: R-Button
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -52873,9 +52963,9 @@ GameObject:
   - component: {fileID: 1955662929}
   - component: {fileID: 1955662928}
   - component: {fileID: 1955662927}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: 2R5
-  m_TagString: Untagged
+  m_TagString: R-Button
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -55166,9 +55256,9 @@ GameObject:
   - component: {fileID: 2074249573}
   - component: {fileID: 2074249572}
   - component: {fileID: 2074249571}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: 2R3
-  m_TagString: Untagged
+  m_TagString: R-Button
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

@@ -56,8 +56,10 @@ public class CubeController : MonoBehaviour {
 		Player.SetActive (false);
 	}
 
+
 	void FixedUpdate ()
 	{
+
 
 		//轉動場景
 		/*if (Input.GetKey ("w")) {

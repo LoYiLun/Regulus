@@ -59,7 +59,7 @@ public class PlayerController : MonoBehaviour {
 			FloorR = 1;
 			FloorMax = 100;
 			MoveTarget = new Vector3 (0.922f, 2.59f, 0.982f);
-			MoveDistance = 0.404f;
+			MoveDistance = 0.1f;
 			//MoveDistance = 0.404f;
 		} else {
 			FloorL = 4;
@@ -174,7 +174,6 @@ public class PlayerController : MonoBehaviour {
 		//九宮格走路
 		//print (FloorR);
 		if (Input.GetKey ("w")) {
-			CubeController.R_Button.transform.GetComponentInChildren<BoxCollider>().enabled = false;
 			if (OneShot == false) {
 				Player.transform.rotation = Quaternion.Euler (0f, 270f, 0f);
 				if (FloorR == FloorR) {
@@ -191,7 +190,6 @@ public class PlayerController : MonoBehaviour {
 		}
 
 		if (Input.GetKey ("s")) {
-			CubeController.R_Button.transform.GetComponentInChildren<BoxCollider>().enabled = false;
 			if (OneShot == false) {
 				Player.transform.rotation = Quaternion.Euler (0f, 90f, 0f);
 				if (FloorR == FloorR) {
@@ -207,7 +205,6 @@ public class PlayerController : MonoBehaviour {
 		}
 
 		if (Input.GetKey ("a")) {
-			CubeController.R_Button.transform.GetComponentInChildren<BoxCollider>().enabled = false;
 			if (OneShot == false) {
 				Player.transform.rotation = Quaternion.Euler (0f, 180f, 0f);
 				if (FloorL == FloorL) {
@@ -223,7 +220,6 @@ public class PlayerController : MonoBehaviour {
 		}
 
 		if (Input.GetKey ("d")) {
-			CubeController.R_Button.transform.GetComponentInChildren<BoxCollider>().enabled = false;
 			if(OneShot == false){
 			Player.transform.rotation = Quaternion.Euler (0f, 0f, 0f);
 				if (FloorL == FloorL) {
