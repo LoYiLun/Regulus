@@ -32,6 +32,9 @@ public class CubeController : MonoBehaviour {
 	private float i;
 	public static int CubeType;
 
+	public GameObject Camera02;
+	public LayerMask CubeLayer = ~(0 << 0);
+
 	//--------------------------------------------------------
 	void Start () {
 		AllCube = GameObject.Find("AllCube");
@@ -41,6 +44,7 @@ public class CubeController : MonoBehaviour {
 		Player = GameObject.Find("Player");
 		stab = GameObject.Find("stab");
 		CubeType = R_Button.transform.childCount / 6;
+		Camera02 = GameObject.Find ("Camera02");
 
 		if (CubeType == 2) {
 			speed = 27f;
@@ -99,18 +103,31 @@ public class CubeController : MonoBehaviour {
 		Ray ray = Camera.main.ScreenPointToRay (Input.mousePosition);
 		RaycastHit hitInfo;
 
+
+
 		if (Input.GetMouseButton (0) && Physics.Raycast (ray, out hitInfo) && StopMouse == false) {
 			Debug.DrawLine (Camera.main.transform.position, hitInfo.transform.position, Color.yellow, 0.1f, true);
 			//Debug.Log (hitInfo.transform.name);
 			BeTouchedObj = hitInfo.collider.gameObject;
-			if(Input.GetMouseButtonDown(0))
-			RotateNum = BeTouchedObj.name;
+
+			if (Input.GetMouseButtonDown (0))
+				RotateNum = BeTouchedObj.name;
 			stab.transform.position = new Vector3 (hitInfo.point.x, hitInfo.point.y, hitInfo.point.z);
-			if (hitInfo.transform.gameObject.tag == "floor") {
+
+			/*if (Physics.Linecast (Camera02.transform.position, stab.transform.position, CubeLayer.value)) {
+				Debug.DrawLine (Camera02.transform.position, hitInfo.transform.position, Color.blue, 0.1f, true);
+				GameObject.Find(hitInfo.collider.gameObject.name).SetActive (false);
+			}*/
+		}
+			//點地板移動
+			/*if (hitInfo.transform.gameObject.tag == "floor") {
 				moveState = true;
 				target = new Vector3 (hitInfo.point.x, hitInfo.point.y, hitInfo.point.z);
-			}
-		}
+			}*/
+
+
+
+
 
 		if(Input.GetMouseButton(0) == false)
 			stab.transform.position = new Vector3 (0,0,0);
@@ -772,6 +789,14 @@ public class CubeController : MonoBehaviour {
 				} else {
 					RotateNum = null;
 				}break;
+
+		case"C000":
+			if (Physics.Linecast (Player.transform.position, stab.transform.position, CubeLayer)) {
+				Debug.DrawLine (Camera.main.transform.position, stab.transform.position, Color.blue, 0.1f, true);
+				GameObject.Find ("C000").SetActive (false);
+			}
+			break;
+
 			}
 
 		}

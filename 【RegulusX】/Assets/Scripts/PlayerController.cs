@@ -173,10 +173,16 @@ public class PlayerController : MonoBehaviour {
 
 		//九宮格走路
 		//print (FloorR);
+		/*
+		if (   Player.transform.position.z > -0.6f
+			&& Player.transform.position.z < 1.6f
+			&& Player.transform.position.z > -0.6f
+			&& Player.transform.position.z > -0.6f)*/
+
 		if (Input.GetKey ("w")) {
 			if (OneShot == false) {
 				Player.transform.rotation = Quaternion.Euler (0f, 270f, 0f);
-				if (FloorR == FloorR) {
+
 					SavePosition ();
 					MoveTarget -= new Vector3 (MoveDistance, 0f, 0f);
 					FloorR += 1;
@@ -185,14 +191,14 @@ public class PlayerController : MonoBehaviour {
 					moveState = true;
 
 
-				}
+
 			}
 		}
 
 		if (Input.GetKey ("s")) {
 			if (OneShot == false) {
 				Player.transform.rotation = Quaternion.Euler (0f, 90f, 0f);
-				if (FloorR == FloorR) {
+
 					SavePosition ();
 					MoveTarget += new Vector3 (MoveDistance, 0f, 0f);
 					FloorR -= 1;
@@ -200,14 +206,14 @@ public class PlayerController : MonoBehaviour {
 					MoveType = "Back";
 					moveState = true;
 
-				}
+
 			}
 		}
 
 		if (Input.GetKey ("a")) {
 			if (OneShot == false) {
 				Player.transform.rotation = Quaternion.Euler (0f, 180f, 0f);
-				if (FloorL == FloorL) {
+
 					SavePosition ();
 					MoveTarget -= new Vector3 (0f, 0f, MoveDistance);
 					FloorL += 1;
@@ -215,14 +221,14 @@ public class PlayerController : MonoBehaviour {
 					MoveType = "Left";
 					moveState = true;
 
-				}
+
 			}
 		}
 
 		if (Input.GetKey ("d")) {
 			if(OneShot == false){
 			Player.transform.rotation = Quaternion.Euler (0f, 0f, 0f);
-				if (FloorL == FloorL) {
+
 					SavePosition ();
 					MoveTarget += new Vector3 (0f, 0f, MoveDistance);
 					FloorL -= 1;
@@ -230,7 +236,7 @@ public class PlayerController : MonoBehaviour {
 					MoveType = "Right";
 					moveState = true;
 
-				}
+
 			}
 		}
 
