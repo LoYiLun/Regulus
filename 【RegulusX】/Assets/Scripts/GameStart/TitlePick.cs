@@ -15,7 +15,7 @@ public class TitlePick : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         PickOrder = 1;
-        PickerPos = StartGame.transform.position + new Vector3(-250,0,0);
+        PickerPos = StartGame.transform.position + new Vector3(-350,0,0);
         transform.position = PickerPos;
 
 		Enter = GameObject.Find ("Decide").GetComponent<AudioSource>();
@@ -24,19 +24,19 @@ public class TitlePick : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        if (Input.GetKeyDown(KeyCode.UpArrow))
+        if (Input.GetKeyDown(KeyCode.UpArrow)||Input.GetKeyDown(KeyCode.W))
         {
 			Switch.Play ();
-            PickerPos = StartGame.transform.position + new Vector3(-250, 0, 0);
+            PickerPos = StartGame.transform.position + new Vector3(-350, 0, 0);
             transform.position = PickerPos;
             PickOrder = 1;
             StartGame.fontSize = 72;
             ExitGame.fontSize = 50;
         }
-        if (Input.GetKeyDown(KeyCode.DownArrow))
+        if (Input.GetKeyDown(KeyCode.DownArrow) || Input.GetKeyDown(KeyCode.S))
         {
 			Switch.Play ();
-            PickerPos = ExitGame.transform.position + new Vector3(-250, 0, 0);
+            PickerPos = ExitGame.transform.position + new Vector3(-350, 0, 0);
             transform.position = PickerPos;
             PickOrder = 2;
             StartGame.fontSize = 50;
@@ -44,7 +44,7 @@ public class TitlePick : MonoBehaviour {
         }
         if(PickOrder == 1)
         {
-            if (Input.GetKeyDown(KeyCode.Return))
+            if (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.Space))
             {
 				Enter.Play ();
                 SceneManager.LoadScene("Level01");
@@ -52,7 +52,7 @@ public class TitlePick : MonoBehaviour {
         }
         if (PickOrder == 2)
         {
-            if (Input.GetKeyDown(KeyCode.Return))
+            if (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.Space))
             {
 				Enter.Play ();
                 Application.Quit();
