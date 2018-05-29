@@ -34,6 +34,8 @@ public class CubeController : MonoBehaviour {
 
 	public GameObject Camera02;
 	public LayerMask CubeLayer = ~(0 << 0);
+	public float j;
+	private bool Delay = false;
 
 	//--------------------------------------------------------
 	void Start () {
@@ -60,9 +62,14 @@ public class CubeController : MonoBehaviour {
 		Player.SetActive (false);
 	}
 
+	void Update(){
+		if(Delay)
+			StartCoroutine(Wait_second());
+	}
 
 	void FixedUpdate ()
 	{
+
 
 
 		//轉動場景
@@ -200,7 +207,8 @@ public class CubeController : MonoBehaviour {
 			PlayerController.MoveTarget = Player.transform.position;
 			PlayerController.OneShot = false;
 			PlayerController.moveState = true;
-			R_Button.SetActive (true);
+			//R_Button.SetActive (true);
+			Delay = true;	
 			StopMouse = false;
 			RotateNum = null;
 			break;
@@ -790,17 +798,34 @@ public class CubeController : MonoBehaviour {
 					RotateNum = null;
 				}break;
 
+			/*
 		case"C000":
 			if (Physics.Linecast (Player.transform.position, stab.transform.position, CubeLayer)) {
 				Debug.DrawLine (Camera.main.transform.position, stab.transform.position, Color.blue, 0.1f, true);
 				GameObject.Find ("C000").SetActive (false);
 			}
-			break;
+			break;*/
 
 			}
 
 		}
 			
+
+	IEnumerator Wait_second ()
+	{
+		if (Delay) {
+
+			for (j = 0; j <= 0.3f; j += Time.deltaTime) {
+
+
+				yield return 0;
+			}
+			R_Button.SetActive (true);
+			Delay = false;
+
+		}
+	}
+
 
 
 
