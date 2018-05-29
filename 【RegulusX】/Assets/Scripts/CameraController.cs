@@ -57,7 +57,7 @@ public class CameraController : MonoBehaviour {
 */			FollowPlayer = false;
 			Camera02.transform.position = Vector3.MoveTowards (Camera02.transform.position, camObj01.transform.position, 10f * Time.deltaTime);
 		}
-		else if (Input.GetKey("z") == true)
+		else if (Input.GetKey("z") == true && FollowPlayer == false)
 		{
 			//第三人稱視角(近)
 /*			Camera02.SetActive(true);
@@ -66,6 +66,8 @@ public class CameraController : MonoBehaviour {
 			camObj01.SetActive(false);*/
 			FollowPlayer = false;
 			Camera02.transform.position = Vector3.MoveTowards (Camera02.transform.position, camObj02.transform.position, 10f * Time.deltaTime);
+			if (Camera02.transform.position.z - camObj02.transform.position.z < 1)
+				FollowPlayer = true;
 		}
 
 	}
