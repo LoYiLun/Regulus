@@ -24,7 +24,8 @@ public class CubeController : MonoBehaviour {
 	private float speed ;
 
 	private Vector3 target = new Vector3();
-	private bool moveState = false;
+	public static bool MovetoWall;
+	public static bool moveState = false;
 	private bool StopMouse = false;
 	public int floortemp;
 	public int floortemp2;
@@ -33,9 +34,12 @@ public class CubeController : MonoBehaviour {
 	public static int CubeType;
 
 	public GameObject Camera02;
-	public LayerMask CubeLayer = ~(0 << 0);
+	public LayerMask CubeLayer = 1 << 11;
 	public float j;
 	private bool Delay = false;
+
+
+
 
 	//--------------------------------------------------------
 	void Start () {
@@ -66,6 +70,10 @@ public class CubeController : MonoBehaviour {
 		if(Delay)
 			StartCoroutine(Wait_second());
 	}
+
+
+
+
 
 	void FixedUpdate ()
 	{
@@ -110,9 +118,14 @@ public class CubeController : MonoBehaviour {
 		Ray ray = Camera.main.ScreenPointToRay (Input.mousePosition);
 		RaycastHit hitInfo;
 
+		// 右鍵操作
+		if (Input.GetMouseButton (1) && Physics.Raycast (ray, out hitInfo, 500, 1<<11) && StopMouse == false) {
+			Debug.DrawLine (Camera.main.transform.position, hitInfo.transform.position, Color.blue, 0.1f, true);
 
+		}
 
-		if (Input.GetMouseButton (0) && Physics.Raycast (ray, out hitInfo) && StopMouse == false) {
+		// 左鍵操作
+		if (Input.GetMouseButton (0) && Physics.Raycast (ray, out hitInfo , 500, 1<<12) && StopMouse == false) {
 			Debug.DrawLine (Camera.main.transform.position, hitInfo.transform.position, Color.yellow, 0.1f, true);
 			//Debug.Log (hitInfo.transform.name);
 			BeTouchedObj = hitInfo.collider.gameObject;
@@ -125,31 +138,33 @@ public class CubeController : MonoBehaviour {
 				Debug.DrawLine (Camera02.transform.position, hitInfo.transform.position, Color.blue, 0.1f, true);
 				GameObject.Find(hitInfo.collider.gameObject.name).SetActive (false);
 			}*/
-		}
+		
 			//點地板移動
-			/*if (hitInfo.transform.gameObject.tag == "floor") {
+			if (hitInfo.transform.gameObject.tag == "floor") {
 				moveState = true;
 				target = new Vector3 (hitInfo.point.x, hitInfo.point.y, hitInfo.point.z);
-			}*/
+				PlayerController.Dance = 1;
+				
+			}
+		}
 
 
 
 
-
-		if(Input.GetMouseButton(0) == false)
+		if(Input.GetMouseButton(0) == false) 
 			stab.transform.position = new Vector3 (0,0,0);
 
 		//角色移動
-		Vector3 targetDir = target - Player.transform.position ;
-		Vector3 newDir = Vector3.RotateTowards(Player.transform.forward, targetDir, speed/120*Time.deltaTime, 0.0F);
+		Vector3 targetDir = (target - Player.transform.position) ;
+		Vector3 newDir = Vector3.RotateTowards(Player.transform.forward, targetDir, speed/10*Time.deltaTime, 0.0F);
 
 		if(moveState){
 			if(Vector3.Distance(Player.transform.position,target)<0.35f){
 				moveState = false;
 			}
-			Player.transform.rotation = Quaternion.LookRotation(newDir);
-			Player.transform.position = Vector3.MoveTowards(Player.transform.position,target,speed/120*Time.deltaTime);
 
+			Player.transform.rotation = Quaternion.LookRotation(newDir);
+			Player.transform.position = Vector3.MoveTowards (Player.transform.position, target, speed / 250 * Time.deltaTime);
 		}
 
 
@@ -189,6 +204,7 @@ public class CubeController : MonoBehaviour {
 				this.transform.parent = AllCube.transform;
 				Player.transform.parent = null;
 				FloorMom.transform.parent = null;
+				GameObject.Find ("InvisibleWall").transform.parent = null;
 
 				if (CubeType == 2) 
 					speed = 27f;
@@ -614,8 +630,9 @@ public class CubeController : MonoBehaviour {
 					DX = DZ = 0;
 					this.transform.parent = CubeMom.transform;
 					FloorMom.transform.parent = CubeMom.transform;//EX1
+				GameObject.Find("InvisibleWall").transform.parent = CubeMom.transform;
 					Player.transform.parent = CubeMom.transform;
-					childtemp = 2;
+					childtemp = 3;
 
 					/*floortemp2 = PlayerController.FloorL;
 					PlayerController.FloorL = PlayerController.FloorR;
@@ -750,8 +767,9 @@ public class CubeController : MonoBehaviour {
 					DX = DZ = 0;
 					this.transform.parent = CubeMom.transform;
 					FloorMom.transform.parent = CubeMom.transform;
+				GameObject.Find("InvisibleWall").transform.parent = CubeMom.transform;
 					Player.transform.parent = CubeMom.transform;//EX2
-					childtemp = 2;
+					childtemp = 3;
 
 					/*floortemp2 = PlayerController.FloorR;
 					PlayerController.FloorR = PlayerController.FloorL;

@@ -27,7 +27,7 @@ public class PlayerController : MonoBehaviour {
 
 
 	//主角身體部位
-	public string MoveType;
+	public static string MoveType;
 	public GameObject Head;
 	public GameObject HandLeft;
 	public GameObject HandRight;
@@ -48,6 +48,8 @@ public class PlayerController : MonoBehaviour {
 
 	//V2
 	public static bool CubeV2 = true;
+
+	public static int Dance = 0;
 
 	void Start () {
 		Player = GameObject.Find("Player");
@@ -76,14 +78,18 @@ public class PlayerController : MonoBehaviour {
 	void OnCollisionEnter(Collision Noway)
 	{
 		if (Noway.gameObject.tag == "Obstacle") {
-			Debug.Log ("001");
+			Debug.Log ("撞到東西囉");
 			ICanGo = false;
-			if (Noway.gameObject.layer == 9) {
-				ObstacleController.Hit = true;
-				ObstacleController.HitName = Noway.gameObject.name;
-			}
-
 		}
+
+		if (Noway.gameObject.tag == "Tree") {
+			Debug.Log ("撞到樹囉");
+			CubeController.MovetoWall = true;
+			CubeController.moveState = false;
+			ObstacleController.Hit = true;
+			ObstacleController.HitName = Noway.gameObject.name;
+		}
+
 		if (Noway.gameObject.tag == "Ice")
 			OnIce = true;
 	}
@@ -98,6 +104,16 @@ public class PlayerController : MonoBehaviour {
 	{
 		//方法A
 			switch (MoveType) {
+
+		case"GoDance":
+			ShakeBody++;
+			Head.transform.RotateAround (BrainA.transform.position, transform.TransformDirection (Vector3.forward), speed / 6 * i);
+			HandLeft.transform.RotateAround (BrainA.transform.position, transform.TransformDirection(Vector3.left), speed * i);
+			HandRight.transform.RotateAround (BrainA.transform.position, transform.TransformDirection(Vector3.left), -speed * i);
+			FootLeft.transform.RotateAround (BrainB.transform.position, transform.TransformDirection(Vector3.left), -speed * i);
+			FootRight.transform.RotateAround (BrainB.transform.position, transform.TransformDirection(Vector3.left), speed * i);
+
+			break;
 
 		case"Forward":
 				ShakeBody++;
@@ -178,6 +194,16 @@ public class PlayerController : MonoBehaviour {
 			&& Player.transform.position.z < 1.6f
 			&& Player.transform.position.z > -0.6f
 			&& Player.transform.position.z > -0.6f)*/
+
+		if (Dance == 1) {
+			MoveType = "GoDance";
+			BodyRotate ();
+		}
+		if (Input.GetMouseButton(0) == false && CubeController.moveState == false) {
+			Dance = 0;
+			MoveType = null;
+			BodyRotate ();
+		}
 
 		if (Input.GetKey ("w")) {
 			if (OneShot == false) {
@@ -262,10 +288,10 @@ public class PlayerController : MonoBehaviour {
 				moveState = false;
 			}
 			if (ICanGo == false) {
-				
+				/*
 				MoveTarget = TargetTemp;
 				FloorR = FTR;
-				FloorL = FTL;
+				FloorL = FTL;*/
 			}
 			BodyRotate ();
 			Player.transform.position = Vector3.MoveTowards (Player.transform.position, MoveTarget, 1.2f * Time.deltaTime);

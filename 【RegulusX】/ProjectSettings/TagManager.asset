@@ -8,7 +8,7 @@ TagManager:
   - floor
   - Obstacle
   - ResetButton
-  - Ice
+  - Tree
   layers:
   - Default
   - TransparentFX
@@ -22,7 +22,7 @@ TagManager:
   - Tree
   - R_Button
   - Cube
-  - 
+  - Floor
   - 
   - 
   - 
