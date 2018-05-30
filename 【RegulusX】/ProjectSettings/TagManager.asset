@@ -9,6 +9,7 @@ TagManager:
   - Obstacle
   - ResetButton
   - Tree
+  - Cube
   layers:
   - Default
   - TransparentFX

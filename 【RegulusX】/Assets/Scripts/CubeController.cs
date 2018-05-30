@@ -34,12 +34,22 @@ public class CubeController : MonoBehaviour {
 	public static int CubeType;
 
 	public GameObject Camera02;
-	public LayerMask CubeLayer = 1 << 11;
 	public float j;
 	private bool Delay = false;
-
-
-
+	public GameObject BeTouchedCube;
+	private Vector3 CubeRotateDirection;
+	private Vector3 CubeHeart;
+	private float MouseTan;
+	private float MouseTanRange = 10 / 17;
+	private string TempRotate;
+	public GameObject CubeA;
+	public GameObject CubeB;
+	public GameObject CubeC;
+	public int CubeAP;
+	public int CubeBP;
+	public int CubeCP;
+	public GameObject ThreeMom;
+	private Material Origin;
 
 	//--------------------------------------------------------
 	void Start () {
@@ -51,6 +61,8 @@ public class CubeController : MonoBehaviour {
 		stab = GameObject.Find("stab");
 		CubeType = R_Button.transform.childCount / 6;
 		Camera02 = GameObject.Find ("Camera02");
+		ThreeMom = GameObject.Find ("ThreeMom");
+		Origin = this.GetComponent<Renderer> ().material;
 
 		if (CubeType == 2) {
 			speed = 27f;
@@ -72,13 +84,30 @@ public class CubeController : MonoBehaviour {
 	}
 
 
+	void MouseRotate (){
+		if (CubeRotateDirection.x > 0) {
+			if (MouseTan > MouseTanRange)
+				TempRotate = "2R2";
+			else if (MouseTan == MouseTanRange)
+				TempRotate = "2R3";
+			else if (MouseTan < MouseTanRange)
+				TempRotate = "2R6";
+		}
+		else if (CubeRotateDirection.x < 0) {
+			if (MouseTan > -MouseTanRange)
+				TempRotate = "2R11";
+			else if (MouseTan == -MouseTanRange)
+				TempRotate = "2R10";
+			else if (MouseTan < -MouseTanRange)
+				TempRotate = "2R7";
+		}
 
+	}
 
 
 	void FixedUpdate ()
-	{
-
-
+	{	
+			
 
 		//轉動場景
 		/*if (Input.GetKey ("w")) {
@@ -118,26 +147,47 @@ public class CubeController : MonoBehaviour {
 		Ray ray = Camera.main.ScreenPointToRay (Input.mousePosition);
 		RaycastHit hitInfo;
 
-		// 右鍵操作
-		if (Input.GetMouseButton (1) && Physics.Raycast (ray, out hitInfo, 500, 1<<11) && StopMouse == false) {
-			Debug.DrawLine (Camera.main.transform.position, hitInfo.transform.position, Color.blue, 0.1f, true);
 
+		// 右鍵操作
+		if (Input.GetMouseButton (1) && Physics.Raycast (ray, out hitInfo, 500, 1 << 11) && StopMouse == false) {
+			Debug.DrawLine (Camera.main.transform.position, hitInfo.transform.position, Color.blue, 0.1f, true);
+			BeTouchedCube = hitInfo.collider.gameObject;
+			BeTouchedCube.GetComponent<Renderer> ().material = Resources.Load ("Characters/Materials/BeTouchedCube", typeof(Material)) as Material;
+			CubeRotateDirection = Input.mousePosition - CubeHeart;
+			MouseTan = CubeRotateDirection.y / CubeRotateDirection.x;
+			MouseRotate ();
+
+
+			if (Input.GetMouseButtonDown (1)) {
+				CubeHeart = Input.mousePosition;
+			}
 		}
 
+		if (Input.GetMouseButtonUp (1)) {
+			this.GetComponent<Renderer> ().material = Origin;
+			//RotateNum = TempRotate;
+		}
+		
+		if (Input.GetMouseButton (1) == false) {
+			this.GetComponent<Renderer> ().material = Origin;
+
+		}
+			
+			
+
+
 		// 左鍵操作
-		if (Input.GetMouseButton (0) && Physics.Raycast (ray, out hitInfo , 500, 1<<12) && StopMouse == false) {
+		if (Input.GetMouseButton (0) && Physics.Raycast (ray, out hitInfo , 500, 1 << 12) && StopMouse == false) {
 			Debug.DrawLine (Camera.main.transform.position, hitInfo.transform.position, Color.yellow, 0.1f, true);
-			//Debug.Log (hitInfo.transform.name);
 			BeTouchedObj = hitInfo.collider.gameObject;
 
-			if (Input.GetMouseButtonDown (0))
+
+
+			if (Input.GetMouseButtonDown (0)) {
 				RotateNum = BeTouchedObj.name;
+			}
 			stab.transform.position = new Vector3 (hitInfo.point.x, hitInfo.point.y, hitInfo.point.z);
 
-			/*if (Physics.Linecast (Camera02.transform.position, stab.transform.position, CubeLayer.value)) {
-				Debug.DrawLine (Camera02.transform.position, hitInfo.transform.position, Color.blue, 0.1f, true);
-				GameObject.Find(hitInfo.collider.gameObject.name).SetActive (false);
-			}*/
 		
 			//點地板移動
 			if (hitInfo.transform.gameObject.tag == "floor") {
@@ -177,6 +227,7 @@ public class CubeController : MonoBehaviour {
 
 
 		switch(RotateNum){
+
 
 		case"Start":
 			StopMouse = true;
@@ -223,10 +274,10 @@ public class CubeController : MonoBehaviour {
 			PlayerController.MoveTarget = Player.transform.position;
 			PlayerController.OneShot = false;
 			PlayerController.moveState = true;
-			//R_Button.SetActive (true);
+			R_Button.SetActive (true);
 			Delay = true;	
 			StopMouse = false;
-			RotateNum = null;
+			RotateNum = "null";
 			break;
 
 
@@ -245,14 +296,14 @@ public class CubeController : MonoBehaviour {
 				
 				RotateNum = "Start";
 			} else {
-				RotateNum = null;
+				RotateNum = "null";
 			}
 				break;
 
 		case"R2":
 			if (this.CubeL == 1) {
 				if (Player.transform.position.z > -0.6 && Player.transform.position.z < 0.8) {
-					RotateNum = null;
+					RotateNum = "null";
 					break;
 				}
 				
@@ -284,7 +335,7 @@ public class CubeController : MonoBehaviour {
 				
 				RotateNum = "Start";
 			} else {
-				RotateNum = null;
+				RotateNum = "null";
 			}
 			break;
 
@@ -310,7 +361,7 @@ public class CubeController : MonoBehaviour {
 				
 				RotateNum = "Start";
 			} else
-				RotateNum = null;break;
+				RotateNum = "null";break;
 
 		case"R5":
 			if (this.CubeD == 1) {
@@ -327,7 +378,7 @@ public class CubeController : MonoBehaviour {
 				
 				RotateNum = "Start";
 			} else {
-				RotateNum = null;
+				RotateNum = "null";
 			}break;
 
 		case"R6":
@@ -345,7 +396,7 @@ public class CubeController : MonoBehaviour {
 				
 				RotateNum = "Start";
 			} else {
-				RotateNum = null;
+				RotateNum = "null";
 			}break;
 
 		case"R7":
@@ -363,13 +414,13 @@ public class CubeController : MonoBehaviour {
 				
 				RotateNum = "Start";
 			} else {
-				RotateNum = null;
+				RotateNum = "null";
 			}break;
 
 		case"R8":
 			if (this.CubeR == 1) {
 				if (Player.transform.position.x > -0.6 && Player.transform.position.x < 0.8) {
-					RotateNum = null;
+					RotateNum = "null";
 					break;
 				}
 				
@@ -401,7 +452,7 @@ public class CubeController : MonoBehaviour {
 				
 				RotateNum = "Start";
 			} else {
-				RotateNum = null;
+				RotateNum = "null";
 			}break;
 
 		case"R10":
@@ -419,13 +470,13 @@ public class CubeController : MonoBehaviour {
 				
 				RotateNum = "Start";
 			}  else {
-				RotateNum = null;
+				RotateNum = "null";
 			}break;
 
 		case"R11":
 			if (this.CubeL == 1) {
 				if (Player.transform.position.z > -0.6 && Player.transform.position.z < 0.8) {
-					RotateNum = null;
+					RotateNum = "null";
 					break;
 				}
 				
@@ -457,7 +508,7 @@ public class CubeController : MonoBehaviour {
 				
 				RotateNum = "Start";
 			} else {
-				RotateNum = null;
+				RotateNum = "null";
 			}break;
 
 		case"R13":
@@ -475,7 +526,7 @@ public class CubeController : MonoBehaviour {
 				
 				RotateNum = "Start";
 			} else {
-				RotateNum = null;
+				RotateNum = "null";
 			}break;
 
 		case"R14":
@@ -493,7 +544,7 @@ public class CubeController : MonoBehaviour {
 				
 				RotateNum = "Start";
 			}  else {
-				RotateNum = null;
+				RotateNum = "null";
 			}break;
 
 		case"R15":
@@ -518,7 +569,7 @@ public class CubeController : MonoBehaviour {
 				
 				RotateNum = "Start";
 			} else
-				RotateNum = null;break;
+				RotateNum = "null";break;
 				
 		case"R16":
 			if (this.CubeR == 0 && Player.transform.position.x < 0.8) {
@@ -535,13 +586,13 @@ public class CubeController : MonoBehaviour {
 				
 				RotateNum = "Start";
 			} else {
-				RotateNum = null;
+				RotateNum = "null";
 			}break;
 
 		case"R17":
 			if (this.CubeR == 1) {
 				if (Player.transform.position.x > -0.6 && Player.transform.position.x < 0.8) {
-					RotateNum = null;
+					RotateNum = "null";
 					break;
 				}
 				
@@ -573,7 +624,7 @@ public class CubeController : MonoBehaviour {
 				
 				RotateNum = "Start";
 			} else {
-				RotateNum = null;
+				RotateNum = "null";
 			}break;
 
 
@@ -592,7 +643,7 @@ public class CubeController : MonoBehaviour {
 
 					RotateNum = "Start";
 				} else {
-					RotateNum = null;
+					RotateNum = "null";
 				}
 				break;
 
@@ -611,7 +662,7 @@ public class CubeController : MonoBehaviour {
 
 					RotateNum = "Start";
 				} else {
-					RotateNum = null;
+					RotateNum = "null";
 				}
 				break;
 
@@ -641,7 +692,7 @@ public class CubeController : MonoBehaviour {
 
 					RotateNum = "Start";
 				} else
-					RotateNum = null;break;
+					RotateNum = "null";break;
 
 		case"2R4":
 				if (this.CubeD == 1) {
@@ -658,7 +709,7 @@ public class CubeController : MonoBehaviour {
 
 					RotateNum = "Start";
 				} else {
-					RotateNum = null;
+					RotateNum = "null";
 				}break;
 
 		case"2R5":
@@ -676,7 +727,7 @@ public class CubeController : MonoBehaviour {
 
 					RotateNum = "Start";
 				} else {
-					RotateNum = null;
+					RotateNum = "null";
 				}break;
 
 
@@ -695,7 +746,7 @@ public class CubeController : MonoBehaviour {
 
 					RotateNum = "Start";
 				} else {
-					RotateNum = null;
+					RotateNum = "null";
 				}break;
 
 		case"2R7":
@@ -713,7 +764,7 @@ public class CubeController : MonoBehaviour {
 
 					RotateNum = "Start";
 				}  else {
-					RotateNum = null;
+					RotateNum = "null";
 				}break;
 
 		case"2R8":
@@ -731,7 +782,7 @@ public class CubeController : MonoBehaviour {
 
 					RotateNum = "Start";
 				} else {
-					RotateNum = null;
+					RotateNum = "null";
 				}break;
 
 		case"2R9":
@@ -749,7 +800,7 @@ public class CubeController : MonoBehaviour {
 
 					RotateNum = "Start";
 				} else {
-					RotateNum = null;
+					RotateNum = "null";
 				}break;
 
 		case"2R10":
@@ -778,7 +829,7 @@ public class CubeController : MonoBehaviour {
 
 					RotateNum = "Start";
 				} else
-					RotateNum = null;break;
+					RotateNum = "null";break;
 
 		case"2R11":
 				if (this.CubeR == 0 && Player.transform.position.x < 0.4f) {
@@ -795,7 +846,7 @@ public class CubeController : MonoBehaviour {
 
 					RotateNum = "Start";
 				} else {
-					RotateNum = null;
+					RotateNum = "null";
 				}break;
 
 		case"2R12":
@@ -813,16 +864,10 @@ public class CubeController : MonoBehaviour {
 
 					RotateNum = "Start";
 				} else {
-					RotateNum = null;
+					RotateNum = "null";
 				}break;
 
-			/*
-		case"C000":
-			if (Physics.Linecast (Player.transform.position, stab.transform.position, CubeLayer)) {
-				Debug.DrawLine (Camera.main.transform.position, stab.transform.position, Color.blue, 0.1f, true);
-				GameObject.Find ("C000").SetActive (false);
-			}
-			break;*/
+
 
 			}
 

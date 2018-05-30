@@ -57,6 +57,7 @@ public class UiController : MonoBehaviour {
         if(!UiController.Talking)
         {
             GameObject.Find("Player").GetComponent<PlayerController>().enabled = true;
+			GameObject.Find("FloorSon").GetComponent<BoxCollider>().enabled = true;
             GameObject.Find("2R1").GetComponent<BoxCollider>().enabled = true;
             GameObject.Find("2R2").GetComponent<BoxCollider>().enabled = true;
             GameObject.Find("2R3").GetComponent<BoxCollider>().enabled = true;
@@ -73,6 +74,7 @@ public class UiController : MonoBehaviour {
         else if (UiController.Talking)
         {
             GameObject.Find("Player").GetComponent<PlayerController>().enabled = false;
+			GameObject.Find("FloorSon").GetComponent<BoxCollider>().enabled = false;
             GameObject.Find("2R1").GetComponent<BoxCollider>().enabled = false;
             GameObject.Find("2R2").GetComponent<BoxCollider>().enabled = false;
             GameObject.Find("2R3").GetComponent<BoxCollider>().enabled = false;
