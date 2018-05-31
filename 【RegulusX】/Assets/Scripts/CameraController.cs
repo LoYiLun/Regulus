@@ -38,50 +38,33 @@ public class CameraController : MonoBehaviour {
 	// Update is called once per frame
 	void FixedUpdate () {
 
-		ToClose = Vector3.Distance(camObj01.transform.position, Camera02.transform.position) / 5;
-		ToFar   = Vector3.Distance(camObj02.transform.position, Camera02.transform.position) / 5;
+		ToClose = Vector3.Distance (camObj01.transform.position, Camera02.transform.position) / 5;
+		ToFar = Vector3.Distance (camObj02.transform.position, Camera02.transform.position) / 5;
 
-		if (Input.GetKey ("c") == true || FollowPlayer) {
+
+
+			if (Input.GetKey ("c") == true || FollowPlayer) {
 			
-			Camera02.transform.position = Camera2Player + Talker.transform.position;
-			FollowPlayer = true;
-		}
-		/*if (Input.GetKey("o") == true)
-		{
-			//第一人稱視角
-			Camera01.SetActive(false);
-			camObj01.SetActive(false);
-			Camera02.SetActive(false);
-			camObj02.SetActive(false);
-		}*/
-		//if (Input.GetKey("x") == true)
-		if (Input.GetAxis("Mouse ScrollWheel") <0) 
-		{
-			//第三人稱視角(遠)
-			/*Camera02.SetActive(false);
-			camObj02.SetActive(false);
-			Camera01.SetActive(true);
-			camObj01.SetActive(true);
-*/			FollowPlayer = false;
-			Camera02.transform.position = Vector3.MoveTowards (Camera02.transform.position, camObj01.transform.position, ToClose);
-		}
-		else
-			//if (Input.GetKey("z") == true && FollowPlayer == false)
-		if (Input.GetAxis("Mouse ScrollWheel") >0) 
-			{
-			//第三人稱視角(近)
-/*			Camera02.SetActive(true);
-			camObj02.SetActive(true);
-			Camera01.SetActive(false);
-			camObj01.SetActive(false);*/
-			FollowPlayer = false;
+				Camera02.transform.position = Camera2Player + Talker.transform.position;
+				FollowPlayer = true;
+			}
+
+
+			if (Input.GetAxis ("Mouse ScrollWheel") < 0) {
+				FollowPlayer = false;
+				Camera02.transform.position = Vector3.MoveTowards (Camera02.transform.position, camObj01.transform.position, ToClose);
+			} 
+			else if (Input.GetAxis ("Mouse ScrollWheel") > 0 && FollowPlayer == false) {
+
+
 				Camera02.transform.position = Vector3.MoveTowards (Camera02.transform.position, camObj02.transform.position, ToFar);
 				if ((Camera02.transform.position.z - camObj02.transform.position.z < 0.8f))
-				FollowPlayer = true;
-		}
+					FollowPlayer = true;
+			}
 
-		if (Input.GetMouseButtonDown (2))
-			FollowPlayer = true;
+			if (Input.GetMouseButtonDown (2))
+				FollowPlayer = true;
+
 
 	}
 }

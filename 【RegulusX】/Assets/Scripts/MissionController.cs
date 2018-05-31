@@ -61,6 +61,7 @@ public class MissionController : MonoBehaviour {
 				AnimationController.Item.transform.position = new Vector3 (ItemTarget.transform.position.x, ItemTarget.transform.position.y + ItemGoUp, ItemTarget.transform.position.z);
 				AnimationController.Item.transform.parent = GameObject.Find (ItemHead.name).transform;
 				PlayerController.moveState = true;
+				CubeController.R_Button.SetActive (true);
 				AnimationController.AnimationEnd = false;
 			}
 		}

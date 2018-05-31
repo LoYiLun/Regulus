@@ -44,6 +44,9 @@ public class AnimationController : MonoBehaviour {
 		if (GetItem) {
 			for (float i = 0; i <= 1.5f; i += Time.deltaTime) {
 				PlayerController.moveState = false;
+				CubeController.R_Button.SetActive (false);
+				CubeController.StopMouse = true;
+				CubeController.moveState = false;
 				Item.transform.position = new Vector3 (Item.transform.position.x, Item.transform.position.y + 0.008f * i * Time.deltaTime, Item.transform.position.z);
 				Item.transform.Rotate (Vector3.back * 3f * Time.deltaTime);
 				//print (i + " seconds");

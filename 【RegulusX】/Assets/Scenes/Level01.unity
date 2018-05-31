@@ -8528,7 +8528,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   version: 1
-  scrollPos: {x: 116.444214, y: -0.57362366}
+  scrollPos: {x: 80.156006, y: -39.857895}
   variablesScrollPos: {x: 0, y: 0}
   variablesExpanded: 1
   blockViewHeight: 402
@@ -8540,9 +8540,8 @@ MonoBehaviour:
     width: 1114
     height: 859
   selectedBlocks:
-  - {fileID: 320653457}
-  selectedCommands:
-  - {fileID: 320653464}
+  - {fileID: 320653471}
+  selectedCommands: []
   variables:
   - {fileID: 320653478}
   - {fileID: 320653484}
@@ -11790,6 +11789,10 @@ Prefab:
       propertyPath: value
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1201990793658522, guid: c56a96d5b1eb03c41a5ef60199f9a7b8, type: 2}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c56a96d5b1eb03c41a5ef60199f9a7b8, type: 2}
   m_IsPrefabParent: 0
@@ -14578,7 +14581,7 @@ Prefab:
     - target: {fileID: 114286014260794724, guid: 7b8f56ebb0cf4b84d8b19060c53a1ca2,
         type: 2}
       propertyPath: selectedBlocks.Array.size
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 114286014260794724, guid: 7b8f56ebb0cf4b84d8b19060c53a1ca2,
         type: 2}
@@ -14626,7 +14629,7 @@ Prefab:
         type: 2}
       propertyPath: selectedBlocks.Array.data[0]
       value: 
-      objectReference: {fileID: 1479757828}
+      objectReference: {fileID: 1479757787}
     - target: {fileID: 114387677824295246, guid: 7b8f56ebb0cf4b84d8b19060c53a1ca2,
         type: 2}
       propertyPath: targetFlowchart
@@ -30652,6 +30655,12 @@ MonoBehaviour:
   stringData:
     stringRef: {fileID: 0}
     stringVal: 
+--- !u!114 &1479757787 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114559719950123038, guid: 7b8f56ebb0cf4b84d8b19060c53a1ca2,
+    type: 2}
+  m_PrefabInternal: {fileID: 668119410}
+  m_Script: {fileID: 11500000, guid: 3d3d73aef2cfc4f51abf34ac00241f60, type: 3}
 --- !u!114 &1479757788
 MonoBehaviour:
   m_ObjectHideFlags: 2

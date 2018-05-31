@@ -98,10 +98,9 @@ public class UiController : MonoBehaviour {
 
     void LockPlayer()
     {
-        if(UiController.Talking || !UiController.Teach)
+		if(UiController.Talking || !UiController.Teach )
         {
             GameObject.Find("Player").GetComponent<PlayerController>().enabled = false;
-            GameObject.Find("FloorSon").GetComponent<BoxCollider>().enabled = false;
             GameObject.Find("2R1").GetComponent<BoxCollider>().enabled = false;
             GameObject.Find("2R2").GetComponent<BoxCollider>().enabled = false;
             GameObject.Find("2R3").GetComponent<BoxCollider>().enabled = false;
@@ -114,11 +113,12 @@ public class UiController : MonoBehaviour {
             GameObject.Find("2R10").GetComponent<BoxCollider>().enabled = false;
             GameObject.Find("2R11").GetComponent<BoxCollider>().enabled = false;
             GameObject.Find("2R12").GetComponent<BoxCollider>().enabled = false;
+			CubeController.StopMouse = true;
+			CubeController.moveState = false;
         }
         else 
         {
             GameObject.Find("Player").GetComponent<PlayerController>().enabled = true;
-            GameObject.Find("FloorSon").GetComponent<BoxCollider>().enabled = true;
             GameObject.Find("2R1").GetComponent<BoxCollider>().enabled = true;
             GameObject.Find("2R2").GetComponent<BoxCollider>().enabled = true;
             GameObject.Find("2R3").GetComponent<BoxCollider>().enabled = true;
@@ -131,6 +131,8 @@ public class UiController : MonoBehaviour {
             GameObject.Find("2R10").GetComponent<BoxCollider>().enabled = true;
             GameObject.Find("2R11").GetComponent<BoxCollider>().enabled = true;
             GameObject.Find("2R12").GetComponent<BoxCollider>().enabled = true;
+
+
         }
     }
 

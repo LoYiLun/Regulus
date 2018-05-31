@@ -50,6 +50,7 @@ public class PlayerController : MonoBehaviour {
 	public static bool CubeV2 = true;
 
 	public static int Dance = 0;
+	private bool KeyBoardMode;
 
 	void Start () {
 		Player = GameObject.Find("Player");
@@ -112,7 +113,14 @@ public class PlayerController : MonoBehaviour {
 			HandRight.transform.RotateAround (BrainA.transform.position, transform.TransformDirection(Vector3.left), -speed * i);
 			FootLeft.transform.RotateAround (BrainB.transform.position, transform.TransformDirection(Vector3.left), -speed * i);
 			FootRight.transform.RotateAround (BrainB.transform.position, transform.TransformDirection(Vector3.left), speed * i);
-
+			// 走路起煙特效
+			if (PlayerHome.transform.childCount < 1) {
+				Player2 = Instantiate (PlayerStep);
+				Player2.transform.parent = PlayerHome.transform;
+				Player2.transform.localPosition = Vector3.zero;
+				Player2.transform.parent = null;
+				Destroy (Player2, 0.5f);
+			}
 			break;
 
 		case"Forward":
@@ -122,8 +130,6 @@ public class PlayerController : MonoBehaviour {
 				HandRight.transform.RotateAround (BrainA.transform.position, Vector3.forward, -speed * i);
 				FootLeft.transform.RotateAround (BrainB.transform.position, Vector3.forward, -speed * i);
 				FootRight.transform.RotateAround (BrainB.transform.position, Vector3.forward, speed * i);
-			if(OnIce)
-			OneShot = false;
 			break;
 
 			case"Back":
@@ -133,8 +139,6 @@ public class PlayerController : MonoBehaviour {
 			HandRight.transform.RotateAround (BrainA.transform.position, Vector3.back, -speed * i);
 			FootLeft.transform.RotateAround (BrainB.transform.position, Vector3.back, -speed * i);
 			FootRight.transform.RotateAround (BrainB.transform.position, Vector3.back, speed * i);
-			if(OnIce)
-			OneShot = false;
 				break;
 
 			case"Left":
@@ -144,8 +148,6 @@ public class PlayerController : MonoBehaviour {
 			HandRight.transform.RotateAround (BrainA.transform.position, Vector3.left, -speed * i);
 			FootLeft.transform.RotateAround (BrainB.transform.position, Vector3.left, -speed * i);
 			FootRight.transform.RotateAround (BrainB.transform.position, Vector3.left, speed * i);
-			if(OnIce)
-			OneShot = false;
 				break;
 
 			case"Right":
@@ -155,8 +157,6 @@ public class PlayerController : MonoBehaviour {
 			HandRight.transform.RotateAround (BrainA.transform.position, Vector3.right, -speed * i);
 			FootLeft.transform.RotateAround (BrainB.transform.position, Vector3.right, -speed * i);
 			FootRight.transform.RotateAround (BrainB.transform.position, Vector3.right, speed * i);
-			if(OnIce)
-			OneShot = false;
 				break;
 
 
@@ -205,7 +205,7 @@ public class PlayerController : MonoBehaviour {
 			BodyRotate ();
 		}
 
-		if (Input.GetKey ("w")) {
+		if (Input.GetKey ("w") && KeyBoardMode) {
 			if (OneShot == false) {
 				Player.transform.rotation = Quaternion.Euler (0f, 270f, 0f);
 
@@ -213,15 +213,15 @@ public class PlayerController : MonoBehaviour {
 					MoveTarget -= new Vector3 (MoveDistance, 0f, 0f);
 					FloorR += 1;
 					OneShot = true;
-					MoveType = "Forward";
+				MoveType = "Forward";
 					moveState = true;
 
 
 
 			}
 		}
-
-		if (Input.GetKey ("s")) {
+			
+		if (Input.GetKey ("s") && KeyBoardMode) {
 			if (OneShot == false) {
 				Player.transform.rotation = Quaternion.Euler (0f, 90f, 0f);
 
@@ -229,14 +229,14 @@ public class PlayerController : MonoBehaviour {
 					MoveTarget += new Vector3 (MoveDistance, 0f, 0f);
 					FloorR -= 1;
 					OneShot = true;
-					MoveType = "Back";
+				MoveType = "Back";
 					moveState = true;
 
 
 			}
 		}
 
-		if (Input.GetKey ("a")) {
+		if (Input.GetKey ("a") && KeyBoardMode) {
 			if (OneShot == false) {
 				Player.transform.rotation = Quaternion.Euler (0f, 180f, 0f);
 
@@ -244,14 +244,14 @@ public class PlayerController : MonoBehaviour {
 					MoveTarget -= new Vector3 (0f, 0f, MoveDistance);
 					FloorL += 1;
 					OneShot = true;
-					MoveType = "Left";
+				MoveType = "Left";
 					moveState = true;
 
 
 			}
 		}
 
-		if (Input.GetKey ("d")) {
+		if (Input.GetKey ("d") && KeyBoardMode) {
 			if(OneShot == false){
 			Player.transform.rotation = Quaternion.Euler (0f, 0f, 0f);
 
@@ -259,54 +259,43 @@ public class PlayerController : MonoBehaviour {
 					MoveTarget += new Vector3 (0f, 0f, MoveDistance);
 					FloorL -= 1;
 					OneShot = true;
-					MoveType = "Right";
+				MoveType = "Right";
 					moveState = true;
 
 
 			}
 		}
 
-		if (moveState) {
+		if (moveState && KeyBoardMode) {
 
+			// 腳步聲(未設定)
 			if (SoundIsPlaying == false) {
 				WalkSound.Play ();
 				SoundIsPlaying = true;
 				}
 
-			if (PlayerHome.transform.childCount < 1) {
-				Player2 = Instantiate (PlayerStep);
-				Player2.transform.parent = PlayerHome.transform;
-				Player2.transform.localPosition = Vector3.zero;
-				Player2.transform.parent = null;
-				Destroy (Player2, 0.5f);
-			}
-			
+
+
+			// 到定位時停止移動
 			if (Vector3.Distance (Player.transform.position, MoveTarget) < 0.01f) {
 				ICanGo = true;
 				OneShot = false;
 				SoundIsPlaying = false;
 				moveState = false;
 			}
+
+			// 不能走時後退一步(已取消)
 			if (ICanGo == false) {
 				/*
 				MoveTarget = TargetTemp;
 				FloorR = FTR;
 				FloorL = FTL;*/
 			}
-			BodyRotate ();
-			Player.transform.position = Vector3.MoveTowards (Player.transform.position, MoveTarget, 1.2f * Time.deltaTime);
 
+			// 移動到設定位置
+			//BodyRotate ();
+			//Player.transform.position = Vector3.MoveTowards (Player.transform.position, MoveTarget, 1.2f * Time.deltaTime);
 
-		} else {
-			//BodyReset ();
-		}
-			
-
+		} 
 	}
-
-
-
-
-
-
 }
