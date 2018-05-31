@@ -58,5 +58,14 @@ public class TitlePick : MonoBehaviour {
                 Application.Quit();
             }
         }
+
+		// 滑鼠操作
+		Ray ray = Camera.main.ScreenPointToRay (Input.mousePosition);
+		RaycastHit hitInfo;
+
+
+		// 右鍵操作
+		if (Physics.Raycast (ray, out hitInfo,)) {
+			Debug.DrawLine (Camera.main.transform.position, hitInfo.transform.position, Color.blue, 0.1f, true);
     }
 }
