@@ -12,6 +12,8 @@ public class TitlePick : MonoBehaviour {
 
 	private AudioSource Enter;
 	private AudioSource Switch;
+
+	private string Choose;
 	// Use this for initialization
 	void Start () {
         PickOrder = 1;
@@ -24,7 +26,7 @@ public class TitlePick : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        if (Input.GetKeyDown(KeyCode.UpArrow)||Input.GetKeyDown(KeyCode.W))
+		if (Input.GetKeyDown(KeyCode.UpArrow)||Input.GetKeyDown(KeyCode.W) || Choose == "StartGame")
         {
 			Switch.Play ();
             PickerPos = StartGame.transform.position + new Vector3(-350, 0, 0);
@@ -33,7 +35,7 @@ public class TitlePick : MonoBehaviour {
             StartGame.fontSize = 72;
             ExitGame.fontSize = 50;
         }
-        if (Input.GetKeyDown(KeyCode.DownArrow) || Input.GetKeyDown(KeyCode.S))
+		if (Input.GetKeyDown(KeyCode.DownArrow) || Input.GetKeyDown(KeyCode.S) || Choose == "ExitGame")
         {
 			Switch.Play ();
             PickerPos = ExitGame.transform.position + new Vector3(-350, 0, 0);
@@ -64,8 +66,15 @@ public class TitlePick : MonoBehaviour {
 		RaycastHit hitInfo;
 
 
-		// 右鍵操作
-		if (Physics.Raycast (ray, out hitInfo,)) {
+
+		if (Input.GetMouseButtonDown(1) && Physics.Raycast (ray, out hitInfo)) {
 			Debug.DrawLine (Camera.main.transform.position, hitInfo.transform.position, Color.blue, 0.1f, true);
-    }
+			Choose = hitInfo.collider.name;
+		}
+	}
+
+	public void ToChoose(){
+
+
+	}
 }
