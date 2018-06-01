@@ -9,7 +9,6 @@ public class PlayerController : MonoBehaviour {
 	public GameObject PlayerHome;
 	public GameObject PlayerStep;
 	public static bool moveState = false;
-	private bool OnIce = false;
 	private float MoveDistance;
 	public static int FloorR;
 	public static int FloorL;
@@ -91,8 +90,6 @@ public class PlayerController : MonoBehaviour {
 			ObstacleController.HitName = Noway.gameObject.name;
 		}
 
-		if (Noway.gameObject.tag == "Ice")
-			OnIce = true;
 	}
 
 	void SavePosition(){

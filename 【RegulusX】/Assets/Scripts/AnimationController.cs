@@ -21,6 +21,8 @@ public class AnimationController : MonoBehaviour {
 
 	void Update () {
 
+
+
 		Item = MissionController.MissionObj;
 		if(Item != null)
 		ItemHome = GameObject.Find(Item.name);

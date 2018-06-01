@@ -36,7 +36,6 @@ public class ObstacleController : MonoBehaviour {
 
 		if (AnimPlus) {
 			AnimNum++;
-			Debug.Log (AnimNum);
 			AnimPlus = false;
 		}
 

@@ -200,7 +200,7 @@ public class CubeController : MonoBehaviour {
 		   && AnimationController.AnimationEnd == false
 		   && AnimationController.GetItem == false) {
 			StopMouse = false;
-		} else if (!UiController.Teach) {
+		} else if (!UiController.Teach || RotateNum == "Start") {
 			StopMouse = true;
 		}
 

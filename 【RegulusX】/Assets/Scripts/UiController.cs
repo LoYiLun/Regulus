@@ -74,6 +74,8 @@ public class UiController : MonoBehaviour {
             }
 
         }
+
+
     }
     public static bool Talking
     {
@@ -101,7 +103,7 @@ public class UiController : MonoBehaviour {
 		if(UiController.Talking || !UiController.Teach )
         {
             GameObject.Find("Player").GetComponent<PlayerController>().enabled = false;
-            GameObject.Find("2R1").GetComponent<BoxCollider>().enabled = false;
+			GameObject.Find("2R1").GetComponent<BoxCollider>().enabled = false;
             GameObject.Find("2R2").GetComponent<BoxCollider>().enabled = false;
             GameObject.Find("2R3").GetComponent<BoxCollider>().enabled = false;
             GameObject.Find("2R4").GetComponent<BoxCollider>().enabled = false;

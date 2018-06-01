@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Fungus;
 
 public class CameraController : MonoBehaviour {
 
@@ -17,6 +18,9 @@ public class CameraController : MonoBehaviour {
 	private float ToClose;
 	private float ToFar;
 
+	public static Flowchart Begining;
+	private Material BlackWall;
+
 	void Awake(){
 		Camera02 = GameObject.Find ("Camera02");
 
@@ -32,11 +36,26 @@ public class CameraController : MonoBehaviour {
 	void Start () {
 		Camera2Player = Camera02.transform.position - Player.transform.position;
 		Talker = Player;
-
+		BlackWall = GameObject.Find ("BlackWall").GetComponent<SpriteRenderer> ().material;
+		Begining = GameObject.Find("Begining").GetComponent<Flowchart>();
 	}
-	
+
+	public static bool HideBlackWall
+	{
+		get { return Begining.GetBooleanVariable("HideBlackWall"); }
+	}
+
 	// Update is called once per frame
 	void FixedUpdate () {
+
+
+
+		if (HideBlackWall && BlackWall.color.a > 0.05f) {
+			BlackWall.color -= new Color (0f, 0f, 0f, 0.01f);
+			if (BlackWall.color.a <= 0.01) {
+				GameObject.Find ("BlackWall").SetActive (false);
+			}
+		}
 
 		ToClose = Vector3.Distance (camObj01.transform.position, Camera02.transform.position) / 5;
 		ToFar = Vector3.Distance (camObj02.transform.position, Camera02.transform.position) / 5;
