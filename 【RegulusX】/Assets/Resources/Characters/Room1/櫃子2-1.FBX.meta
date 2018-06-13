@@ -1,6 +1,6 @@
 fileFormatVersion: 2
-guid: e557dd83cedf36d4fa9759df4d3ca4ca
-timeCreated: 1528258259
+guid: 26440a2fe8407f64396f23eb3d6f4b9d
+timeCreated: 1528904643
 licenseType: Free
 ModelImporter:
   serializedVersion: 22
@@ -13,7 +13,8 @@ ModelImporter:
     400002: Box007
     400004: Object001
     400006: //RootNode
-    2100000: No Name
+    2100000: 'Material #1'
+    2100002: 'Material #0'
     2300000: Box005
     2300002: Box007
     2300004: Object001
@@ -23,7 +24,6 @@ ModelImporter:
     4300000: Box007
     4300002: Box005
     4300004: Object001
-    9500000: //RootNode
   externalObjects: {}
   materials:
     importMaterials: 1
@@ -98,7 +98,7 @@ ModelImporter:
     hasExtraRoot: 0
     skeletonHasParents: 1
   lastHumanDescriptionAvatarSource: {instanceID: 0}
-  animationType: 2
+  animationType: 0
   humanoidOversampling: 1
   additionalBone: 0
   userData: 

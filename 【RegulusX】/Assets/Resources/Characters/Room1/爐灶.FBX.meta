@@ -1,6 +1,6 @@
 fileFormatVersion: 2
-guid: d3408c0d83d58c54b997323a80269244
-timeCreated: 1528258258
+guid: 9e1dece620cd4334095635ba2676c1dc
+timeCreated: 1528904458
 licenseType: Free
 ModelImporter:
   serializedVersion: 22
@@ -27,7 +27,7 @@ ModelImporter:
     400016: Line005
     400018: Line006
     400020: //RootNode
-    2100000: No Name
+    2100000: 'Material #0'
     2300000: Box181
     2300002: Cylinder057
     2300004: Cylinder058
@@ -58,8 +58,12 @@ ModelImporter:
     4300014: Box181
     4300016: Cylinder061
     4300018: Line006
-    9500000: //RootNode
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: "\u7210\u7076UV"
+    second: {fileID: 2800000, guid: b253f342c3d3a4c4bb9d1db3cb6714a3, type: 3}
   materials:
     importMaterials: 1
     materialName: 0
@@ -133,7 +137,7 @@ ModelImporter:
     hasExtraRoot: 0
     skeletonHasParents: 1
   lastHumanDescriptionAvatarSource: {instanceID: 0}
-  animationType: 2
+  animationType: 0
   humanoidOversampling: 1
   additionalBone: 0
   userData: 
