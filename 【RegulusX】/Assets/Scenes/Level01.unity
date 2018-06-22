@@ -15094,6 +15094,10 @@ Prefab:
       propertyPath: commandList.Array.data[25]
       value: 
       objectReference: {fileID: 1479757731}
+    - target: {fileID: 1562676393610674, guid: 7b8f56ebb0cf4b84d8b19060c53a1ca2, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 7b8f56ebb0cf4b84d8b19060c53a1ca2, type: 2}
   m_IsPrefabParent: 0
@@ -28045,6 +28049,10 @@ Prefab:
       propertyPath: volume
       value: 0.308
       objectReference: {fileID: 0}
+    - target: {fileID: 1985057963614324, guid: bf3568cb1ddf96f4784549cebfc17bdd, type: 2}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: bf3568cb1ddf96f4784549cebfc17bdd, type: 2}
   m_IsPrefabParent: 0
@@ -30873,6 +30881,12 @@ MonoBehaviour:
   stopVoiceover: 1
   waitForVO: 0
   setSayDialog: {fileID: 0}
+--- !u!114 &1479757791 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114286014260794724, guid: 7b8f56ebb0cf4b84d8b19060c53a1ca2,
+    type: 2}
+  m_PrefabInternal: {fileID: 668119410}
+  m_Script: {fileID: 11500000, guid: 7a334fe2ffb574b3583ff3b18b4792d3, type: 3}
 --- !u!114 &1479757792
 MonoBehaviour:
   m_ObjectHideFlags: 2
@@ -36523,7 +36537,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 61dddfdc5e0e44ca298d8f46f7f5a915, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  selectedFlowchart: {fileID: 320653465}
+  selectedFlowchart: {fileID: 1479757791}
 --- !u!4 &1822966204
 Transform:
   m_ObjectHideFlags: 1
